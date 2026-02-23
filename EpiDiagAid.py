@@ -104,7 +104,7 @@ elif kemungkinan_kejang:
             q9d = yn("9.d Dimulai satu sisi lalu menjadi kedua sisi?")
 
             q9c = st.multiselect(
-                "9.c Aura sebelum serangan:",
+                "9.c Gejala sebelum serangan:",
                 ["Perubahan perilaku", "Mual-muntah", "Nyeri ulu hati",
                  "Penciuman/pengecapan aneh",
                  "Gangguan penglihatan"]
