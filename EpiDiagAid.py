@@ -106,9 +106,8 @@ elif kemungkinan_kejang:
                 ["Perubahan perilaku", "Mual-muntah", "Nyeri ulu hati",
                  "Penciuman/pengecapan aneh",
                  "Gangguan penglihatan"]
+                 )
             q9d = yn("9.d Dimulai satu sisi lalu menjadi kedua sisi?")
-
-            )
 
             q9a,q9b,q9d = map(conv,[q9a,q9b,q9d])
 
