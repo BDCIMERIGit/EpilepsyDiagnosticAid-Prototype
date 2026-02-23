@@ -101,13 +101,13 @@ elif kemungkinan_kejang:
 
             q9a = yn("9.a Serangan pada satu sisi tubuh?")
             q9b = yn("9.b Kepala/wajah/mata miring ke satu sisi?")
-            q9d = yn("9.d Dimulai satu sisi lalu menjadi kedua sisi?")
-
             q9c = st.multiselect(
-                "9.c Gejala sebelum serangan:",
+                "9.c Apakah ada gejala sebelum serangan?",
                 ["Perubahan perilaku", "Mual-muntah", "Nyeri ulu hati",
                  "Penciuman/pengecapan aneh",
                  "Gangguan penglihatan"]
+            q9d = yn("9.d Dimulai satu sisi lalu menjadi kedua sisi?")
+
             )
 
             q9a,q9b,q9d = map(conv,[q9a,q9b,q9d])
