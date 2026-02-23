@@ -62,7 +62,6 @@ elif kemungkinan_kejang:
     # scoring khusus (Tidak = 1, Ya = 0)
     q7a = 1 if q7a == "Tidak" else 0
     q7b = 1 if q7b == "Tidak" else 0
-    score_7 = q7a + q7b
 
     if q7a == 1 and q7b == 1:
         diagnosis = "Kejang tanpa provokasi (kejang spontan)"
@@ -94,9 +93,10 @@ elif kemungkinan_kejang:
             st.success(f"Diagnosis: **{diagnosis}**")
 
         # =====================
-        # LANJUT KE TIPE KEJANG (9 & 10)
+        # LANJUT KE TIPE KEJANG (HANYA JIKA EPILEPSI)
         # =====================
-        if diagnosis in ["First Unprovoked Seizure (FUS)", "Kemungkinan Epilepsi"]:
+        if diagnosis == "Kemungkinan Epilepsi":
+
             st.header("Pertanyaan 9 (Kejang Fokal)")
 
             q9a = yn("9.a Serangan pada satu sisi tubuh?")
