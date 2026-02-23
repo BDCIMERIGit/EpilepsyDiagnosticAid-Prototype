@@ -31,18 +31,8 @@ q1,q2a,q2b,q3,q4a,q4b,q4c,q5,q6a,q6b = map(conv,
 
 score_1_6 = q1 + q2a + q2b + q3 + q4a + q4b + q4c + q5 + q6a + q6b
 
-kemungkinan_kejang = (
-    score_1_6 >= 6 and
-    q1 == 1 and q2a == 1 and
-    q2b == 1 and q3 == 1 and q5 == 1 and
-    q4a == 1 and q4b == 1 and q4c == 1 and
-    (q6a == 1 or q6b == 1)
-)
-
-bukan_kejang = (
-    score_1_6 < 6 or
-    (q2a == 0 and q3 == 0 and q4a == 0 and q4b == 0 and q4c == 0 and q6a == 0)
-)
+bukan_kejang = score_1_6 < 6
+kemungkinan_kejang = score_1_6 >= 6
 
 diagnosis = None
 
@@ -50,16 +40,15 @@ diagnosis = None
 # OUTPUT AWAL
 # =====================
 if bukan_kejang:
-    st.error("❌ Diagnosis: **Bukan serangan kejang**")
+    st.error("❌ Diagnosis: **Bukan Kejang**")
 
 elif kemungkinan_kejang:
-    st.success("⚠️ **Kemungkinan serangan kejang**")
+    st.success("⚠️ **Kemungkinan Serangan Kejang**")
     st.header("Pertanyaan 7")
 
     q7a = yn("7.a Dipicu oleh emosi/aktivitas/lingkungan?")
     q7b = yn("7.b Dipicu oleh demam/muntah/dehidrasi/cedera kepala?")
 
-    # scoring khusus (Tidak = 1, Ya = 0)
     q7a = 1 if q7a == "Tidak" else 0
     q7b = 1 if q7b == "Tidak" else 0
 
@@ -67,9 +56,6 @@ elif kemungkinan_kejang:
         diagnosis = "Kejang tanpa provokasi (kejang spontan)"
         st.success(f"Diagnosis: **{diagnosis}**")
 
-        # =====================
-        # PERTANYAAN 8
-        # =====================
         st.header("Pertanyaan 8")
 
         q8a = yn("8.a Apakah serangan terjadi satu kali?")
@@ -101,12 +87,14 @@ elif kemungkinan_kejang:
 
             q9a = yn("9.a Serangan pada satu sisi tubuh?")
             q9b = yn("9.b Kepala/wajah/mata miring ke satu sisi?")
+
             q9c = st.multiselect(
                 "9.c Apakah ada gejala sebelum serangan?",
                 ["Perubahan perilaku", "Mual-muntah", "Nyeri ulu hati",
                  "Penciuman/pengecapan aneh",
                  "Gangguan penglihatan"]
-                 )
+            )
+
             q9d = yn("9.d Dimulai satu sisi lalu menjadi kedua sisi?")
 
             q9a,q9b,q9d = map(conv,[q9a,q9b,q9d])
