@@ -155,7 +155,7 @@ if st.session_state.step == 3:
     # =========================
     q8a = st.radio(
         "8.a. Apakah serangan terjadi satu kali?",
-        ["Ya", "Tidak"],
+        ["Tidak", "Ya"],
         key="q8a"
     )
 
@@ -165,7 +165,7 @@ if st.session_state.step == 3:
     if q8a == "Ya":
         q8b = st.radio(
             "8.b. Apakah kejang terjadi lebih dari satu kali?",
-            ["Ya", "Tidak"],
+            ["Tidak", "Ya"],
             key="q8b"
         )
     else:
@@ -177,7 +177,7 @@ if st.session_state.step == 3:
     if q8a == "Ya" and st.session_state.q8b == "Ya":
         q8c = st.radio(
             "8.c. Apakah interval antar serangan lebih dari 24 jam?",
-            [ "Ya", "Tidak"],
+            [ "Tidak", "Ya"],
             key="q8c"
         )
     else:
