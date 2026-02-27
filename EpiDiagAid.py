@@ -168,25 +168,26 @@ elif st.session_state.step == 3:
     else:
         skor8c = 0
 
-    if st.button("Proses Pertanyaan 8"):
+        if st.button("Proses Pertanyaan 8"):
 
         # =========================
         # RULE DIAGNOSIS
         # =========================
 
-        # FIRST UNPROVOKED SEIZURE (FUS)
         if skor8a == 1 and skor8b == 0 and skor8c == 0:
             hasil8 = "First Unprovoked Seizure (FUS)"
+            next_step = 6   # langsung ke hasil akhir
 
-        # KEMUNGKINAN EPILEPSI
         elif skor8a == 1 and skor8b == 1:
             hasil8 = "Kemungkinan mengalami epilepsi"
+            next_step = 4   # lanjut ke pertanyaan 9
 
         else:
             hasil8 = "Tidak memenuhi kriteria"
+            next_step = 6   # langsung ke hasil akhir
 
         st.session_state.hasil8 = hasil8
-        st.session_state.step = 4
+        st.session_state.step = next_step
         st.rerun()
 
 # =====================================================
