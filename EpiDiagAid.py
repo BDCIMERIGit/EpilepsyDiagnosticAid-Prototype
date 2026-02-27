@@ -146,50 +146,92 @@ elif st.session_state.step == 2:
 # =====================================================
 # STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
 # =====================================================
-elif st.session_state.step == 3:
+if st.session_state.step == 3:
 
-    st.success(f"Hasil Diagnosis Lanjutan adalah: **{st.session_state.diagnosis_lanjutan}**")
+    st.subheader("Pertanyaan 8")
 
-    st.header("Pertanyaan 8")
+    # =========================
+    # 8.a
+    # =========================
+    q8a = st.radio(
+        "8.a. Apakah kejang tanpa demam?",
+        ["Belum dijawab", "Ya", "Tidak"],
+        key="q8a"
+    )
 
-    q8a = yn("8.a Apakah serangan terjadi satu kali?")
-    q8b = yn("8.b Apakah serangan terjadi lebih dari satu kali?")
-
-    # Konversi skor awal
-    skor8a = conv(q8a)
-    skor8b = conv(q8b)
-
-    # =====================================================
-    # 8.c MUNCUL HANYA JIKA 8.b = YA
-    # =====================================================
-    if skor8b == 1:
-        q8c = yn("8.c Apakah interval antar serangan lebih dari 24 jam?")
-        skor8c = conv(q8c)
+    # =========================
+    # 8.b (muncul jika 8.a = Ya)
+    # =========================
+    if q8a == "Ya":
+        q8b = st.radio(
+            "8.b. Apakah kejang terjadi ≥2 kali dalam 24 jam?",
+            ["Belum dijawab", "Ya", "Tidak"],
+            key="q8b"
+        )
     else:
-        skor8c = 0
+        st.session_state.q8b = "Belum dijawab"
 
-        if st.button("Proses Pertanyaan 8"):
+    # =========================
+    # 8.c (muncul jika 8.b = Ya)
+    # =========================
+    if q8a == "Ya" and st.session_state.q8b == "Ya":
+        q8c = st.radio(
+            "8.c. Apakah kejang tidak diprovokasi?",
+            ["Belum dijawab", "Ya", "Tidak"],
+            key="q8c"
+        )
+    else:
+        st.session_state.q8c = "Belum dijawab"
 
-            # =========================
-            # RULE DIAGNOSIS
-            # =========================
+    st.markdown("---")
 
-            if skor8a == 1 and skor8b == 0 and skor8c == 0:
-                hasil8 = "First Unprovoked Seizure (FUS)"
-                next_step = 6   # langsung ke hasil akhir
+    # =========================
+    # TOMBOL SELALU MUNCUL
+    # =========================
+    if st.button("Proses Pertanyaan 8"):
 
-            elif skor8a == 1 and skor8b == 1:
-                hasil8 = "Kemungkinan mengalami epilepsi"
-                next_step = 4   # lanjut ke pertanyaan 9
+        # Validasi lengkap dulu
+        if st.session_state.q8a == "Belum dijawab":
+            st.warning("Pertanyaan 8.a belum dijawab")
+            st.stop()
 
-            else:
-                hasil8 = "Tidak memenuhi kriteria"
-                next_step = 6   # langsung ke hasil akhir
+        if st.session_state.q8a == "Ya" and st.session_state.q8b == "Belum dijawab":
+            st.warning("Pertanyaan 8.b belum dijawab")
+            st.stop()
 
-            st.session_state.hasil8 = hasil8
-            st.session_state.step = next_step
-            st.rerun()
+        if (
+            st.session_state.q8a == "Ya"
+            and st.session_state.q8b == "Ya"
+            and st.session_state.q8c == "Belum dijawab"
+        ):
+            st.warning("Pertanyaan 8.c belum dijawab")
+            st.stop()
 
+        # =========================
+        # SCORING
+        # =========================
+        skor8a = 1 if st.session_state.q8a == "Ya" else 0
+        skor8b = 1 if st.session_state.q8b == "Ya" else 0
+        skor8c = 1 if st.session_state.q8c == "Ya" else 0
+
+        # =========================
+        # RULE DIAGNOSIS
+        # =========================
+        if skor8a == 1 and skor8b == 0 and skor8c == 0:
+            hasil8 = "First Unprovoked Seizure (FUS)"
+            next_step = 6
+
+        elif skor8a == 1 and skor8b == 1:
+            hasil8 = "Kemungkinan mengalami epilepsi"
+            next_step = 4
+
+        else:
+            hasil8 = "Tidak memenuhi kriteria"
+            next_step = 6
+
+        st.session_state.hasil8 = hasil8
+        st.session_state.step = next_step
+        st.rerun()
 # =====================================================
 # STEP 4 — PERTANYAAN 9
 # =====================================================
