@@ -91,7 +91,7 @@ if st.session_state.step == 1:
     q4a = yn("4.a [usia >= 1 thn] Pasca serangan: Anak tidak dapat mengingat kejadian yang telah dialami?")
     q4b = yn("4.b [usia >= 1 thn] Pasca serangan: Anak tampak kebingungan??")
     q4c = yn("4.c [usia < 1 thn] Pasca serangan: Anak tampak lemas, mengantuk atau tidur?")
-    q5 = yn("5. Apakah serangan terjadi berulang (repetitif) dengan pola yang sama (stereotipik) dan terus menerus tanpa jeda?")
+    q5 = yn("5.Apakah serangan terjadi berulang (repetitif) dengan pola yang sama (stereotipik) dan terus menerus tanpa jeda?")
     q6a = yn("6.a Apakah serangan berlangsung selama <2 menit?")
     q6b = yn("6.b Apakah serangan berlangsung selama ≥ 2 menit?")
 
