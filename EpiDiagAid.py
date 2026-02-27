@@ -85,15 +85,15 @@ if st.session_state.step == 1:
     st.header("Pertanyaan 1 – 6")
 
     q1 = yn("1. Apakah serangan terjadi tiba-tiba?")
-    q2a = yn("2.a Saat tidur?")
-    q2b = yn("2.b Saat beraktivitas?")
-    q3 = yn("3. Tidak berespons saat serangan?")
-    q4a = yn("4.a Tidak ingat kejadian?")
-    q4b = yn("4.b Tampak kebingungan?")
-    q4c = yn("4.c Lemas/mengantuk?")
-    q5 = yn("5. Berulang dengan pola sama?")
-    q6a = yn("6.a < 2 menit?")
-    q6b = yn("6.b ≥ 2 menit?")
+    q2a = yn("2.a Apakah serangan terjadi saat tidur")
+    q2b = yn("2.b Apakah serangan terjadi saat sedang beraktivitas/bermain?")
+    q3 = yn("3. 3. Apakah saat serangan anak tidak berespons ketika dipanggil atau ditepuk dan serangan tidak berhenti jika dipegang atau digerakkan secara pasif?")
+    q4a = yn("4.a [usia >= 1 thn] Pasca serangan: Anak tidak dapat mengingat kejadian yang telah dialami?")
+    q4b = yn("4.b [usia >= 1 thn] Pasca serangan: Anak tampak kebingungan??")
+    q4c = yn("4.c [usia < 1 thn] Pasca serangan: Anak tampak lemas, mengantuk atau tidur?")
+    q5 = yn("5. Apakah serangan terjadi berulang (repetitif) dengan pola yang sama (stereotipik) dan terus menerus tanpa jeda?")
+    q6a = yn("6.a Apakah serangan berlangsung selama <2 menit?")
+    q6b = yn("6.b Apakah serangan berlangsung selama ≥ 2 menit?")
 
     if st.button("Proses Diagnosis Awal"):
 
@@ -122,8 +122,8 @@ elif st.session_state.step == 2:
 
     st.header("Pertanyaan 7")
 
-    q7a = yn("7.a Dipicu emosi/aktivitas?")
-    q7b = yn("7.b Dipicu demam/cedera kepala?")
+    q7a = yn("7.a Apakah serangan dipicu oleh: Nyeri, takut, menangis, bosan, cemas/panik, marah, frustasi, gembira, rileks, sentuhan, usapan, refluks gastro-esofagus, hiperaktif, berdiri terlalu lama, lingkungan tidak nyaman misal cuaca panas terik dll?")
+    q7b = yn("7.b Apakah serangan dipicu oleh: Demam, muntah, dehidrasi, diare, cedera kepala, sesak napas dalam kurun waktu 24 jam sebelum serangan?")
 
     if st.button("Proses Lanjutan"):
 
@@ -131,9 +131,9 @@ elif st.session_state.step == 2:
         q7b = 1 if q7b == "Tidak" else 0
 
         if q7a == 1 and q7b == 1:
-            diagnosis_lanjutan = "Kejang tanpa provokasi"
+            diagnosis_lanjutan = "Kejang tanpa provokasi (spontan)"
         elif q7a == 0 and q7b == 1:
-            diagnosis_lanjutan = "Pencetus paroksismal non-epilepsi"
+            diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
         elif q7a == 1 and q7b == 0:
             diagnosis_lanjutan = "Kejang simptomatik akut"
         else:
@@ -154,8 +154,8 @@ if st.session_state.step == 3:
     # 8.a
     # =========================
     q8a = st.radio(
-        "8.a. Apakah kejang tanpa demam?",
-        ["Belum dijawab", "Ya", "Tidak"],
+        "8.a. Apakah serangan terjadi satu kali?",
+        ["Ya", "Tidak"],
         key="q8a"
     )
 
@@ -164,8 +164,8 @@ if st.session_state.step == 3:
     # =========================
     if q8a == "Ya":
         q8b = st.radio(
-            "8.b. Apakah kejang terjadi ≥2 kali dalam 24 jam?",
-            ["Belum dijawab", "Ya", "Tidak"],
+            "8.b. Apakah kejang terjadi lebih dari satu kali?",
+            ["Ya", "Tidak"],
             key="q8b"
         )
     else:
@@ -176,8 +176,8 @@ if st.session_state.step == 3:
     # =========================
     if q8a == "Ya" and st.session_state.q8b == "Ya":
         q8c = st.radio(
-            "8.c. Apakah kejang tidak diprovokasi?",
-            ["Belum dijawab", "Ya", "Tidak"],
+            "8.c. Apakah interval antar serangan lebih dari 24 jam?",
+            [ "Ya", "Tidak"],
             key="q8c"
         )
     else:
@@ -245,9 +245,9 @@ elif st.session_state.step == 4:
 
     st.header("Pertanyaan 9")
 
-    q9a = yn("9.a Satu sisi tubuh?")
-    q9b = yn("9.b Deviasi kepala/mata?")
-    q9d = yn("9.d Menjadi kedua sisi?")
+    q9a = yn("9.a Apakah serangan terjadi pada satu sisi tubuh?")
+    q9b = yn("9.b Apakah kepala, wajah, dan mata miring pada satu sisi?")
+    q9d = yn("9.d Apakah serangan diawali pada satu sisi tubuh kemudian pada kedua sisi tubuh?")
 
     if st.button("Proses Pertanyaan 9"):
 
@@ -275,11 +275,7 @@ elif st.session_state.step == 5:
 
     q10a = yn("10.a Apakah serangan terjadi pada kedua sisi tubuh?")
     q10b = yn("10.b Apakah pasca serangan anak mengompol?")
-    q10c = yn("""10.c Apakah saat serangan terjadi:
-- Wajah dan bibir membiru?
-- Mulut mengunci?
-- Kedua mata berdeviasi ke atas?
-""")
+    q10c = yn("""10.c Apakah saat serangan terjadi Wajah dan bibir membiru atau Mulut mengunci atau Kedua mata berdeviasi ke atas?""")
 
     if st.button("Proses Pertanyaan 10"):
 
