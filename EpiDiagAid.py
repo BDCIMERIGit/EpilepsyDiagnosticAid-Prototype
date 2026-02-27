@@ -69,7 +69,7 @@ with col2:
 st.divider()
 
 # =====================================================
-# FUNGSI BANTU
+# FUNCTIONS
 # =====================================================
 def yn(question):
     return st.radio(question, ["Tidak", "Ya"], horizontal=True)
@@ -84,126 +84,174 @@ if st.session_state.step == 1:
 
     st.header("Pertanyaan 1 – 6")
 
-    q1 = yn("1. Apakah serangan terjadi tiba-tiba/mendadak?")
-    q2a = yn("2.a Apakah serangan terjadi saat tidur?")
-    q2b = yn("2.b Apakah serangan terjadi saat sedang beraktivitas/bermain?")
-    q3 = yn("3. Saat serangan anak tidak berespons dan serangan tidak berhenti saat dipegang?")
-    q4a = yn("4.a Pasca serangan: Anak tidak dapat mengingat kejadian?")
-    q4b = yn("4.b Pasca serangan: Anak tampak kebingungan?")
-    q4c = yn("4.c Pasca serangan: Anak tampak lemas/mengantuk/tidur?")
-    q5 = yn("5. Serangan berulang dengan pola sama tanpa jeda?")
-    q6a = yn("6.a Durasi serangan < 2 menit?")
-    q6b = yn("6.b Durasi serangan ≥ 2 menit?")
+    q1 = yn("1. Apakah serangan terjadi tiba-tiba?")
+    q2a = yn("2.a Saat tidur?")
+    q2b = yn("2.b Saat beraktivitas?")
+    q3 = yn("3. Tidak berespons saat serangan?")
+    q4a = yn("4.a Tidak ingat kejadian?")
+    q4b = yn("4.b Tampak kebingungan?")
+    q4c = yn("4.c Lemas/mengantuk?")
+    q5 = yn("5. Berulang dengan pola sama?")
+    q6a = yn("6.a < 2 menit?")
+    q6b = yn("6.b ≥ 2 menit?")
 
     if st.button("Proses Diagnosis Awal"):
 
-        values = list(map(conv, [q1,q2a,q2b,q3,q4a,q4b,q4c,q5,q6a,q6b]))
+        values = list(map(conv,[q1,q2a,q2b,q3,q4a,q4b,q4c,q5,q6a,q6b]))
         score = sum(values)
 
-        st.session_state.score = score
+        if score >= 6:
+            diagnosis_awal = "Kemungkinan Serangan Kejang"
+        else:
+            diagnosis_awal = "Bukan Kejang"
+
+        st.session_state.diagnosis_awal = diagnosis_awal
         st.session_state.step = 2
         st.rerun()
 
 # =====================================================
-# STEP 2 — PERTANYAAN 7
+# STEP 2 — HASIL AWAL + PERTANYAAN 7
 # =====================================================
 elif st.session_state.step == 2:
 
-    if st.session_state.score < 6:
-        st.error("❌ Diagnosis: Bukan Kejang")
-    else:
-        st.success("⚠️ Kemungkinan Serangan Kejang")
+    st.success(f"Diagnosis Awal adalah: **{st.session_state.diagnosis_awal}**")
 
-        st.header("Pertanyaan 7")
+    if st.session_state.diagnosis_awal == "Bukan Kejang":
+        st.session_state.step = 6
+        st.rerun()
 
-        q7a = yn("7.a Dipicu oleh emosi/aktivitas/lingkungan?")
-        q7b = yn("7.b Dipicu oleh demam/muntah/dehidrasi/cedera kepala?")
+    st.header("Pertanyaan 7")
 
-        if st.button("Proses Lanjutan"):
+    q7a = yn("7.a Dipicu emosi/aktivitas?")
+    q7b = yn("7.b Dipicu demam/cedera kepala?")
 
-            st.session_state.q7a = q7a
-            st.session_state.q7b = q7b
-            st.session_state.step = 3
-            st.rerun()
+    if st.button("Proses Lanjutan"):
+
+        q7a = 1 if q7a == "Tidak" else 0
+        q7b = 1 if q7b == "Tidak" else 0
+
+        if q7a == 1 and q7b == 1:
+            diagnosis_lanjutan = "Kejang tanpa provokasi"
+        elif q7a == 0 and q7b == 1:
+            diagnosis_lanjutan = "Pencetus paroksismal non-epilepsi"
+        elif q7a == 1 and q7b == 0:
+            diagnosis_lanjutan = "Kejang simptomatik akut"
+        else:
+            diagnosis_lanjutan = "Perlu evaluasi lanjut"
+
+        st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
+        st.session_state.step = 3
+        st.rerun()
 
 # =====================================================
-# STEP 3 — PERTANYAAN 8–10 + HASIL
+# STEP 3 — PERTANYAAN 8
 # =====================================================
 elif st.session_state.step == 3:
 
-    diagnosis_final = ""
-    tipe_kejang = ""
+    st.success(f"Hasil Diagnosis Lanjutan adalah: **{st.session_state.diagnosis_lanjutan}**")
 
-    q7a = 1 if st.session_state.q7a == "Tidak" else 0
-    q7b = 1 if st.session_state.q7b == "Tidak" else 0
+    st.header("Pertanyaan 8")
 
-    if q7a == 1 and q7b == 1:
+    q8a = yn("8.a Serangan satu kali?")
+    q8b = yn("8.b Lebih dari satu kali?")
 
-        st.header("Pertanyaan 8")
-
-        q8a = yn("8.a Apakah serangan terjadi satu kali?")
-        q8b = yn("8.b Apakah serangan terjadi lebih dari satu kali?")
+    if st.button("Proses Pertanyaan 8"):
 
         q8a = conv(q8a)
         q8b = conv(q8b)
 
         if q8a == 1 and q8b == 0:
-            diagnosis_final = "First Unprovoked Seizure (FUS)"
-
+            hasil8 = "First Unprovoked Seizure (FUS)"
         elif q8b == 1:
-            diagnosis_final = "Kemungkinan Epilepsi"
+            hasil8 = "Kemungkinan Epilepsi"
+        else:
+            hasil8 = "Tidak dapat ditentukan"
 
-            st.header("Pertanyaan 9 (Kejang Fokal)")
-
-            q9a = conv(yn("9.a Serangan pada satu sisi tubuh?"))
-            q9b = conv(yn("9.b Kepala/wajah/mata miring ke satu sisi?"))
-            q9d = conv(yn("9.d Dimulai satu sisi lalu menjadi kedua sisi?"))
-
-            st.header("Pertanyaan 10 (Kejang Umum)")
-
-            q10a = conv(yn("10.a Serangan pada kedua sisi tubuh?"))
-
-            if q9a and q9b:
-                tipe_kejang = "Kejang Fokal"
-                if q9d:
-                    tipe_kejang = "Focal to Bilateral Tonic Clonic"
-
-            elif q10a:
-                tipe_kejang = "Kejang Umum"
-
-    elif q7a == 0 and q7b == 1:
-        diagnosis_final = "Pencetus paroksismal non-epilepsi"
-
-    elif q7a == 1 and q7b == 0:
-        diagnosis_final = "Kejang simptomatik akut"
-
-    # =========================
-    # TAMPILKAN HASIL AKHIR
-    # =========================
-    st.divider()
-    st.header("📋 HASIL DIAGNOSIS")
-
-    st.success(f"Diagnosis Utama: **{diagnosis_final}**")
-
-    if tipe_kejang:
-        st.info(f"Tipe Kejang: **{tipe_kejang}**")
-
-    # =========================
-    # SIMPAN KE RIWAYAT
-    # =========================
-    data = {
-        "Tanggal": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "User": st.session_state.username,
-        "Diagnosis": diagnosis_final,
-        "Tipe Kejang": tipe_kejang
-    }
-
-    st.session_state.history.append(data)
-
-    st.session_state.step = 4
+        st.session_state.hasil8 = hasil8
+        st.session_state.step = 4
+        st.rerun()
 
 # =====================================================
-# STEP 4 — RIWAYAT
+# STEP 4 — PERTANYAAN 9
+# =====================================================
+elif st.session_state.step == 4:
+
+    st.success(f"Hasil Pertanyaan 8 adalah: **{st.session_state.hasil8}**")
+
+    if st.session_state.hasil8 != "Kemungkinan Epilepsi":
+        st.session_state.step = 6
+        st.rerun()
+
+    st.header("Pertanyaan 9")
+
+    q9a = yn("9.a Satu sisi tubuh?")
+    q9b = yn("9.b Deviasi kepala/mata?")
+    q9d = yn("9.d Menjadi kedua sisi?")
+
+    if st.button("Proses Pertanyaan 9"):
+
+        q9a,q9b,q9d = map(conv,[q9a,q9b,q9d])
+
+        if q9a and q9b:
+            tipe9 = "Kejang Fokal"
+            if q9d:
+                tipe9 = "Focal to Bilateral Tonic Clonic"
+        else:
+            tipe9 = "Bukan fokal dominan"
+
+        st.session_state.tipe9 = tipe9
+        st.session_state.step = 5
+        st.rerun()
+
+# =====================================================
+# STEP 5 — PERTANYAAN 10
+# =====================================================
+elif st.session_state.step == 5:
+
+    st.success(f"Hasil Pertanyaan 9 adalah: **{st.session_state.tipe9}**")
+
+    st.header("Pertanyaan 10")
+
+    q10a = yn("10.a Kedua sisi tubuh?")
+
+    if st.button("Proses Pertanyaan 10"):
+
+        q10a = conv(q10a)
+
+        if q10a:
+            tipe10 = "Kejang Umum"
+        else:
+            tipe10 = "Tidak dominan umum"
+
+        st.session_state.tipe10 = tipe10
+        st.session_state.step = 6
+        st.rerun()
+
+# =====================================================
+# STEP 6 — HASIL AKHIR + SIMPAN RIWAYAT
+# =====================================================
+elif st.session_state.step == 6:
+
+    st.success("📋 HASIL AKHIR DIAGNOSIS")
+
+    diagnosis_final = {
+        "Tanggal": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "User": st.session_state.username,
+        "Diagnosis Awal": st.session_state.get("diagnosis_awal",""),
+        "Diagnosis Lanjutan": st.session_state.get("diagnosis_lanjutan",""),
+        "Hasil 8": st.session_state.get("hasil8",""),
+        "Tipe Fokal": st.session_state.get("tipe9",""),
+        "Tipe Umum": st.session_state.get("tipe10","")
+    }
+
+    st.write(diagnosis_final)
+
+    if st.button("Simpan ke Riwayat"):
+        st.session_state.history.append(diagnosis_final)
+        st.success("Berhasil disimpan")
+
+# =====================================================
+# RIWAYAT DIAGNOSIS
 # =====================================================
 if st.session_state.history:
 
@@ -211,9 +259,11 @@ if st.session_state.history:
     st.header("📁 Riwayat Diagnosis")
 
     df_history = pd.DataFrame(st.session_state.history)
-    st.dataframe(df_history, use_container_width=True)
+    df_user = df_history[df_history["User"] == st.session_state.username]
 
-    csv = df_history.to_csv(index=False).encode("utf-8")
+    st.dataframe(df_user, use_container_width=True)
+
+    csv = df_user.to_csv(index=False).encode("utf-8")
 
     st.download_button(
         label="⬇ Download Riwayat (CSV)",
