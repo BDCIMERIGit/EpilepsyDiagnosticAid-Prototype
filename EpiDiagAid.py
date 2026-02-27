@@ -239,7 +239,7 @@ elif st.session_state.step == 4:
 
     st.success(f"Hasil Pertanyaan 8 adalah: **{st.session_state.hasil8}**")
 
-    if st.session_state.hasil8 != "Kemungkinan Epilepsi":
+    if st.session_state.hasil8 != "Kemungkinan mengalami epilepsi":
         st.session_state.step = 6
         st.rerun()
 
