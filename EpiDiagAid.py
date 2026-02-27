@@ -204,22 +204,32 @@ elif st.session_state.step == 4:
         st.rerun()
 
 # =====================================================
-# STEP 5 — PERTANYAAN 10
+# STEP 5 — PERTANYAAN 10 (VERSI LENGKAP)
 # =====================================================
 elif st.session_state.step == 5:
 
     st.success(f"Hasil Pertanyaan 9 adalah: **{st.session_state.tipe9}**")
 
-    st.header("Pertanyaan 10")
+    st.header("Pertanyaan 10 (Kejang Umum)")
 
-    q10a = yn("10.a Kedua sisi tubuh?")
+    q10a = yn("10.a Serangan pada kedua sisi tubuh?")
+    q10b = yn("10.b Pasca serangan anak mengompol?")
+    q10c = yn("10.c Wajah membiru / mulut mengunci / mata deviasi?")
 
     if st.button("Proses Pertanyaan 10"):
 
-        q10a = conv(q10a)
+        q10a, q10b, q10c = map(conv, [q10a, q10b, q10c])
 
-        if q10a:
+        # RULE LOGIC
+        if q10a == 1:
             tipe10 = "Kejang Umum"
+
+            if q10b == 1:
+                tipe10 += " dengan inkontinensia urin"
+
+            if q10c == 1:
+                tipe10 += " dengan tanda hipoksia/deviasi"
+
         else:
             tipe10 = "Tidak dominan umum"
 
