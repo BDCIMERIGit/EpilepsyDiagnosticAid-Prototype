@@ -235,6 +235,9 @@ if st.session_state.step == 3:
 # =====================================================
 # STEP 4 — PERTANYAAN 9
 # =====================================================
+# =====================================================
+# STEP 4 — PERTANYAAN 9 (UPDATED)
+# =====================================================
 elif st.session_state.step == 4:
 
     st.success(f"Hasil Pertanyaan 8 adalah: **{st.session_state.hasil8}**")
@@ -245,18 +248,60 @@ elif st.session_state.step == 4:
 
     st.header("Pertanyaan 9")
 
+    # =========================
+    # 9.a
+    # =========================
     q9a = yn("9.a Apakah serangan terjadi pada satu sisi tubuh?")
+
+    # =========================
+    # 9.b
+    # =========================
     q9b = yn("9.b Apakah kepala, wajah, dan mata miring pada satu sisi?")
+
+    # =========================
+    # 9.c (MULTIPLE CHECKLIST)
+    # =========================
+    st.markdown("### 9.c Apakah sesaat sebelum serangan didahului oleh gejala berikut?")
+
+    q9c = st.multiselect(
+        "Pilih gejala yang dialami:",
+        [
+            "Perubahan perilaku",
+            "Mual-muntah",
+            "Sakit perut berulang atau rasa tidak nyaman di ulu hati",
+            "Penciuman dan pengecapan aneh",
+            "Melihat bayangan benda, cahaya lampu berkedip atau warna pelangi, benda tampak lebih besar, lebih kecil atau berubah bentuk"
+        ],
+        key="q9c"
+    )
+
+    # =========================
+    # 9.d
+    # =========================
     q9d = yn("9.d Apakah serangan diawali pada satu sisi tubuh kemudian pada kedua sisi tubuh?")
+
+    st.markdown("---")
 
     if st.button("Proses Pertanyaan 9"):
 
-        q9a,q9b,q9d = map(conv,[q9a,q9b,q9d])
+        q9a, q9b, q9d = map(conv, [q9a, q9b, q9d])
 
+        # Jika ada minimal 1 aura di 9c → True
+        ada_aura = len(q9c) > 0
+
+        # =========================
+        # RULE KEJANG FOKAL
+        # =========================
         if q9a and q9b:
+
             tipe9 = "Kejang Fokal"
+
             if q9d:
                 tipe9 = "Focal to Bilateral Tonic Clonic"
+
+        elif ada_aura:
+            tipe9 = "Kejang Fokal (berdasarkan gejala aura)"
+
         else:
             tipe9 = "Tidak memenuhi kriteria kejang fokal"
 
