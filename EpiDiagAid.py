@@ -87,7 +87,7 @@ if st.session_state.step == 1:
     q1 = yn("1. Apakah serangan terjadi tiba-tiba?")
     q2a = yn("2.a Apakah serangan terjadi saat tidur")
     q2b = yn("2.b Apakah serangan terjadi saat sedang beraktivitas/bermain?")
-    q3 = yn("3. Apakah saat serangan anak tidak berespons ketika dipanggil atau ditepuk dan serangan tidak berhenti jika dipegang atau digerakkan secara pasif?")
+    q3 = yn("3.Apakah saat serangan anak tidak berespons ketika dipanggil atau ditepuk dan serangan tidak berhenti jika dipegang atau digerakkan secara pasif?")
     q4a = yn("4.a [usia >= 1 thn] Pasca serangan: Anak tidak dapat mengingat kejadian yang telah dialami?")
     q4b = yn("4.b [usia >= 1 thn] Pasca serangan: Anak tampak kebingungan??")
     q4c = yn("4.c [usia < 1 thn] Pasca serangan: Anak tampak lemas, mengantuk atau tidur?")
