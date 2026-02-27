@@ -144,7 +144,7 @@ elif st.session_state.step == 2:
         st.rerun()
 
 # =====================================================
-# STEP 3 — PERTANYAAN 8
+# STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
 # =====================================================
 elif st.session_state.step == 3:
 
@@ -152,20 +152,38 @@ elif st.session_state.step == 3:
 
     st.header("Pertanyaan 8")
 
-    q8a = yn("8.a Serangan satu kali?")
-    q8b = yn("8.b Lebih dari satu kali?")
+    q8a = yn("8.a Apakah serangan terjadi satu kali?")
+    q8b = yn("8.b Apakah serangan terjadi lebih dari satu kali?")
+
+    # Konversi skor awal
+    skor8a = conv(q8a)
+    skor8b = conv(q8b)
+
+    # =====================================================
+    # 8.c MUNCUL HANYA JIKA 8.b = YA
+    # =====================================================
+    if skor8b == 1:
+        q8c = yn("8.c Apakah interval antar serangan lebih dari 24 jam?")
+        skor8c = conv(q8c)
+    else:
+        skor8c = 0
 
     if st.button("Proses Pertanyaan 8"):
 
-        q8a = conv(q8a)
-        q8b = conv(q8b)
+        # =========================
+        # RULE DIAGNOSIS
+        # =========================
 
-        if q8a == 1 and q8b == 0:
+        # FIRST UNPROVOKED SEIZURE (FUS)
+        if skor8a == 1 and skor8b == 0 and skor8c == 0:
             hasil8 = "First Unprovoked Seizure (FUS)"
-        elif q8b == 1:
-            hasil8 = "Kemungkinan Epilepsi"
+
+        # KEMUNGKINAN EPILEPSI
+        elif skor8a == 1 and skor8b == 1:
+            hasil8 = "Kemungkinan mengalami epilepsi"
+
         else:
-            hasil8 = "Tidak dapat ditentukan"
+            hasil8 = "Tidak memenuhi kriteria"
 
         st.session_state.hasil8 = hasil8
         st.session_state.step = 4
