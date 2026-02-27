@@ -358,8 +358,30 @@ elif st.session_state.step == 6:
     st.write(diagnosis_final)
 
     if st.button("Simpan ke Riwayat"):
+
+        # Simpan ke history
         st.session_state.history.append(diagnosis_final)
-        st.success("Berhasil disimpan")
+
+        # =========================
+        # RESET SEMUA HASIL DIAGNOSIS
+        # =========================
+        for key in [
+            "diagnosis_awal",
+            "diagnosis_lanjutan",
+            "hasil8",
+            "tipe9",
+            "tipe10",
+            "q8a","q8b","q8c",
+            "q9c"
+        ]:
+            if key in st.session_state:
+                del st.session_state[key]
+
+        # Kembali ke awal
+        st.session_state.step = 1
+
+        st.success("Berhasil disimpan & form direset")
+        st.rerun()
 
 # =====================================================
 # RIWAYAT DIAGNOSIS
