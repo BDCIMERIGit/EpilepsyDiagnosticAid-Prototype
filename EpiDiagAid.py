@@ -197,7 +197,7 @@ elif st.session_state.step == 4:
             if q9d:
                 tipe9 = "Focal to Bilateral Tonic Clonic"
         else:
-            tipe9 = "Bukan fokal dominan"
+            tipe9 = "Tidak memenuhi kriteria kejang fokal"
 
         st.session_state.tipe9 = tipe9
         st.session_state.step = 5
