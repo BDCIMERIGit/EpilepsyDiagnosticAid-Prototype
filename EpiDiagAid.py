@@ -78,9 +78,9 @@ ul[role="listbox"] li {
     color: #000000 !important;
 }
 
-/* === ITEM HOVER === */
-ul[role="listbox"] li:hover {
-    background-color: #cccccc !important;
+/* === ITEM HOVER (LEBIH MUDA) === */
+div[data-baseweb="popover"] li:hover {
+    background-color: #f0f0f0 !important;  /* abu-abu muda */
     color: #000000 !important;
 }
 
