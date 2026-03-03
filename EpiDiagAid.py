@@ -34,7 +34,7 @@ body, p, span, div, label, h1, h2, h3, h4 {
     border-radius: 12px;
     height: 48px;
     font-size: 16px;
-    background-color: #3ef760;
+    background-color: #5cc8a1;
     color: white !important;
 }
 
