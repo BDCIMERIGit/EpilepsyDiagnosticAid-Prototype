@@ -23,13 +23,8 @@ st.markdown("""
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
 }
 
-/* === FORCE SEMUA FONT JADI HITAM === */
-body, p, span, div, label, h1, h2, h3, h4, h5, h6 {
-    color: #000000 !important;
-}
-
-/* Khusus teks Streamlit widget */
-.stMarkdown, .stText, .stRadio label, .stCheckbox label, .stSelectbox label, .stMultiselect label {
+/* FORCE semua font jadi hitam */
+body, p, span, div, label, h1, h2, h3, h4 {
     color: #000000 !important;
 }
 
