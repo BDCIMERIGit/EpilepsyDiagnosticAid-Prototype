@@ -47,7 +47,7 @@ div[role="radiogroup"] {
 .progress-text {
     text-align: center;
     font-weight: bold;
-    color: #2f80ed;
+    color: #0f0f0f;
     margin-bottom: 10px;
 }
 
