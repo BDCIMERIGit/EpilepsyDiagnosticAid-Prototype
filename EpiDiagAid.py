@@ -55,15 +55,38 @@ body, p, span, div, label, h1, h2, h3, h4 {
     background-color: #f9f9f9;
 }
 
-/* === KHUSUS MULTISELECT (PERTANYAAN 9c) → ABU-ABU MUDA === */
+/* === MULTISELECT (PERTANYAAN 9c) → ABU-ABU MUDA === */
 div[data-baseweb="select"] > div {
-    background-color: #e0e0e0 !important;
-    border-radius: 12px !important;
+    background-color: #e5e5e5 !important;
     border: 1px solid #b0b0b0 !important;
+    border-radius: 12px !important;
 }
 
 /* teks di dalam multiselect */
 div[data-baseweb="select"] span {
+    color: #000000 !important;
+}
+
+/* === DROPDOWN LIST BACKGROUND === */
+ul[role="listbox"] {
+    background-color: #e5e5e5 !important;
+}
+
+/* === ITEM TEKS === */
+ul[role="listbox"] li {
+    background-color: #e5e5e5 !important;
+    color: #000000 !important;
+}
+
+/* === ITEM HOVER === */
+ul[role="listbox"] li:hover {
+    background-color: #cccccc !important;
+    color: #000000 !important;
+}
+
+/* === TEKS YANG SUDAH DIPILIH === */
+div[data-baseweb="tag"] {
+    background-color: #cfcfcf !important;
     color: #000000 !important;
 }
 
