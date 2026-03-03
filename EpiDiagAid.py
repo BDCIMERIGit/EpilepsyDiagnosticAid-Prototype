@@ -426,18 +426,20 @@ elif st.session_state.step == 4:
     # =========================
     st.markdown("### 9.c Apakah sesaat sebelum serangan didahului oleh gejala berikut?")
 
-    q9c = st.multiselect(
-        "Pilih gejala yang dialami:",
-        [
-            "Perubahan perilaku",
-            "Mual-muntah",
-            "Sakit perut berulang atau rasa tidak nyaman di ulu hati",
-            "Penciuman dan pengecapan aneh",
-            "Melihat bayangan benda, cahaya lampu berkedip atau warna pelangi, benda tampak lebih besar, lebih kecil atau berubah bentuk"
-        ],
-        
-        key="q9c"
-    )
+    opsi9c = [
+        "Perubahan perilaku",
+        "Mual-muntah",
+        "Sakit perut berulang atau rasa tidak nyaman di ulu hati",
+        "Penciuman dan pengecapan aneh",
+        "Melihat bayangan benda, cahaya lampu berkedip atau warna pelangi, "
+        "benda tampak lebih besar, lebih kecil atau berubah bentuk"
+    ]
+
+    q9c = []
+    for o in opsi9c:
+        if st.checkbox(o, key=f"q9c_{o}"):
+            q9c.append(o)
+        )
 
     # =========================
     # 9.d
