@@ -72,17 +72,22 @@ body, p, span, div, label, h1, h2, h3, h4 {
     border-radius: 12px;
 }
 
-/* === HASIL AKHIR (DICT OUTPUT st.write) → HIJAU MUDA === */
-/* === HASIL AKHIR (DICT OUTPUT) → HIJAU MUDA (FORCE) === */
-div[data-testid="stCodeBlock"],
-div[data-testid="stCodeBlock"] pre,
-div[data-testid="stCodeBlock"] code,
-pre, code {
-    background-color: #d4edda !important;  /* hijau muda */
+/* === HASIL AKHIR DIAGNOSIS → HIJAU MUDA (PASTI JADI) === */
+.hasil-diagnosis {
+    background-color: #d4edda;
+    border: 1px solid #a3cfbb;
+    border-radius: 12px;
+    padding: 16px;
+    color: #000000;
+    font-size: 14px;
+}
+
+.hasil-diagnosis pre {
+    background: transparent !important;
     color: #000000 !important;
-    border-radius: 12px !important;
-    border: 1px solid #a3cfbb !important;
-    padding: 16px !important;
+    white-space: pre-wrap;
+    margin: 0;
+    font-family: monospace;
 }
 
 /* Remove padding default */
@@ -450,7 +455,16 @@ elif st.session_state.step == 6:
         "Tipe Umum": st.session_state.get("tipe10","")
     }
 
-    st.write(diagnosis_final)
+    st.markdown("### 📋 HASIL AKHIR DIAGNOSIS")
+
+    st.markdown(
+        f"""
+        <div class="hasil-diagnosis">
+            <pre>{diagnosis_final}</pre>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     if st.button("Simpan ke Riwayat"):
 
