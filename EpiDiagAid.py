@@ -145,6 +145,36 @@ div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     background-color: #bbbbbb !important;
 }
 
+/* === POPUP PANEL MULTISELECT (BACKGROUND ABU-ABU) === */
+div[data-baseweb="popover"] > div {
+    background-color: #e5e5e5 !important;
+    border-radius: 12px !important;
+    border: 1px solid #b0b0b0 !important;
+}
+
+/* === LIST CONTAINER === */
+div[data-baseweb="popover"] ul {
+    background-color: #e5e5e5 !important;
+}
+
+/* === ITEM === */
+div[data-baseweb="popover"] li {
+    background-color: #e5e5e5 !important;
+    color: #000000 !important;
+}
+
+/* === ITEM HOVER === */
+div[data-baseweb="popover"] li:hover {
+    background-color: #cccccc !important;
+    color: #000000 !important;
+}
+
+/* === ITEM TERPILIH === */
+div[data-baseweb="popover"] li[aria-selected="true"] {
+    background-color: #bdbdbd !important;
+    color: #000000 !important;
+}
+
 /* Remove padding default */
 .block-container {
     padding-top: 1rem;
