@@ -455,12 +455,17 @@ elif st.session_state.step == 6:
         "Tipe Umum": st.session_state.get("tipe10","")
     }
 
+    # Ubah dict jadi teks baris per baris
+    hasil_teks = ""
+    for k, v in diagnosis_final.items():
+        hasil_teks += f"{k} : {v}\n"
+
     st.markdown("### 📋 HASIL AKHIR DIAGNOSIS")
 
     st.markdown(
         f"""
         <div class="hasil-diagnosis">
-            <pre>{diagnosis_final}</pre>
+            <pre>{hasil_teks}</pre>
         </div>
         """,
         unsafe_allow_html=True
