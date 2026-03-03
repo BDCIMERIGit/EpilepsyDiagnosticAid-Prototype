@@ -116,6 +116,35 @@ div[data-baseweb="tag"] {
     font-family: monospace;
 }
 
+/* === FIX DROPDOWN MULTISELECT (9c) AGAR TIDAK HITAM === */
+
+/* container popup */
+div[data-baseweb="popover"] {
+    background-color: #e5e5e5 !important;
+}
+
+/* listbox */
+div[data-baseweb="popover"] ul {
+    background-color: #e5e5e5 !important;
+}
+
+/* item */
+div[data-baseweb="popover"] li {
+    background-color: #e5e5e5 !important;
+    color: #000000 !important;
+}
+
+/* hover */
+div[data-baseweb="popover"] li:hover {
+    background-color: #cccccc !important;
+    color: #000000 !important;
+}
+
+/* scrollbar */
+div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
+    background-color: #bbbbbb !important;
+}
+
 /* Remove padding default */
 .block-container {
     padding-top: 1rem;
