@@ -77,12 +77,6 @@ body, p, span, div, label, h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
 }
 
-/* Label pertanyaan */
-label {
-    font-weight: 600;
-    color: #000000 !important;
-}
-
 /* Remove padding default */
 .block-container {
     padding-top: 1rem;
