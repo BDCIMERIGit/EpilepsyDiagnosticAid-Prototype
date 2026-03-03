@@ -116,56 +116,37 @@ div[data-baseweb="tag"] {
     font-family: monospace;
 }
 
-/* === FIX DROPDOWN MULTISELECT (9c) AGAR TIDAK HITAM === */
-
-/* container popup */
-div[data-baseweb="popover"] {
+/* === MULTISELECT (PERTANYAAN 9c) === */
+div[data-baseweb="select"] > div {
     background-color: #e5e5e5 !important;
+    border: 1px solid #b0b0b0 !important;
+    border-radius: 12px !important;
 }
 
-/* listbox */
-div[data-baseweb="popover"] ul {
-    background-color: #e5e5e5 !important;
-}
-
-/* item */
-div[data-baseweb="popover"] li {
-    background-color: #e5e5e5 !important;
+div[data-baseweb="select"] span {
     color: #000000 !important;
 }
 
-/* hover */
-div[data-baseweb="popover"] li:hover {
-    background-color: #cccccc !important;
-    color: #000000 !important;
-}
-
-/* scrollbar */
-div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
-    background-color: #bbbbbb !important;
-}
-
-/* === POPUP PANEL MULTISELECT (BACKGROUND ABU-ABU) === */
+/* === POPUP PANEL MULTISELECT === */
 div[data-baseweb="popover"] > div {
     background-color: #e5e5e5 !important;
     border-radius: 12px !important;
     border: 1px solid #b0b0b0 !important;
 }
 
-/* === LIST CONTAINER === */
 div[data-baseweb="popover"] ul {
     background-color: #e5e5e5 !important;
 }
 
-/* === ITEM === */
 div[data-baseweb="popover"] li {
     background-color: #e5e5e5 !important;
     color: #000000 !important;
 }
 
-/* === ITEM HOVER === */
-div[data-baseweb="popover"] li:hover {
-    background-color: #cccccc !important;
+/* === HOVER (ABU MUDA) === */
+div[data-baseweb="popover"] li:hover,
+div[data-baseweb="popover"] li[data-highlighted="true"] {
+    background-color: #f0f0f0 !important;
     color: #000000 !important;
 }
 
