@@ -1,0 +1,406 @@
+import streamlit as st
+import pandas as pd
+from datetime import datetime
+
+# =====================================================
+# CONFIG
+# =====================================================
+st.set_page_config(page_title="Skrining Kejang Anak", layout="centered")
+
+# =====================================================
+# SESSION STATE INIT
+# =====================================================
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+if "username" not in st.session_state:
+    st.session_state.username = ""
+
+if "step" not in st.session_state:
+    st.session_state.step = 1
+
+if "history" not in st.session_state:
+    st.session_state.history = []
+
+# =====================================================
+# LOGIN SYSTEM
+# =====================================================
+USERS = {
+    "profhandry": "123456",
+    "doktervalerie": "123456"
+}
+
+if not st.session_state.logged_in:
+    st.title("🔐 Login Sistem Skrining Kejang Anak")
+
+    username = st.text_input("Username")
+    password = st.text_input("Password", type="password")
+
+    if st.button("Login"):
+        if username in USERS and USERS[username] == password:
+            st.session_state.logged_in = True
+            st.session_state.username = username
+            st.success("Login berhasil")
+            st.rerun()
+        else:
+            st.error("Username atau password salah")
+
+    st.stop()
+
+# =====================================================
+# HEADER SETELAH LOGIN
+# =====================================================
+st.title("🧠 Aplikasi Skrining Serangan Kejang Anak")
+st.write(f"Login sebagai: **{st.session_state.username}**")
+
+col1, col2 = st.columns([1,1])
+
+with col1:
+    if st.button("🔄 Mulai Ulang"):
+        st.session_state.step = 1
+        st.rerun()
+
+with col2:
+    if st.button("🚪 Logout"):
+        st.session_state.logged_in = False
+        st.session_state.step = 1
+        st.rerun()
+
+st.divider()
+
+# =====================================================
+# FUNCTIONS
+# =====================================================
+def yn(question):
+    return st.radio(question, ["Tidak", "Ya"], horizontal=True)
+
+def conv(x):
+    return 1 if x == "Ya" else 0
+
+# =====================================================
+# STEP 1 — PERTANYAAN 1–6
+# =====================================================
+if st.session_state.step == 1:
+
+    st.header("Pertanyaan 1 – 6")
+
+    q1 = yn("1. Apakah serangan terjadi tiba-tiba?")
+    q2a = yn("2.a Apakah serangan terjadi saat tidur")
+    q2b = yn("2.b Apakah serangan terjadi saat sedang beraktivitas/bermain?")
+    q3 = yn("3.Apakah saat serangan anak tidak berespons ketika dipanggil atau ditepuk dan serangan tidak berhenti jika dipegang atau digerakkan secara pasif?")
+    q4a = yn("4.a [usia >= 1 thn] Pasca serangan: Anak tidak dapat mengingat kejadian yang telah dialami?")
+    q4b = yn("4.b [usia >= 1 thn] Pasca serangan: Anak tampak kebingungan??")
+    q4c = yn("4.c [usia < 1 thn] Pasca serangan: Anak tampak lemas, mengantuk atau tidur?")
+    q5 = yn("5.Apakah serangan terjadi berulang (repetitif) dengan pola yang sama (stereotipik) dan terus menerus tanpa jeda?")
+    q6a = yn("6.a Apakah serangan berlangsung selama <2 menit?")
+    q6b = yn("6.b Apakah serangan berlangsung selama ≥ 2 menit?")
+
+    if st.button("Proses Diagnosis Awal"):
+
+        values = list(map(conv,[q1,q2a,q2b,q3,q4a,q4b,q4c,q5,q6a,q6b]))
+        score = sum(values)
+
+        if score >= 6:
+            diagnosis_awal = "Kemungkinan Serangan Kejang"
+        else:
+            diagnosis_awal = "Bukan Kejang"
+
+        st.session_state.diagnosis_awal = diagnosis_awal
+        st.session_state.step = 2
+        st.rerun()
+
+# =====================================================
+# STEP 2 — HASIL AWAL + PERTANYAAN 7
+# =====================================================
+elif st.session_state.step == 2:
+
+    st.success(f"Diagnosis Awal adalah: **{st.session_state.diagnosis_awal}**")
+
+    if st.session_state.diagnosis_awal == "Bukan Kejang":
+        st.session_state.step = 6
+        st.rerun()
+
+    st.header("Pertanyaan 7")
+
+    q7a = yn("7.a Apakah serangan dipicu oleh: Nyeri, takut, menangis, bosan, cemas/panik, marah, frustasi, gembira, rileks, sentuhan, usapan, refluks gastro-esofagus, hiperaktif, berdiri terlalu lama, lingkungan tidak nyaman misal cuaca panas terik dll?")
+    q7b = yn("7.b Apakah serangan dipicu oleh: Demam, muntah, dehidrasi, diare, cedera kepala, sesak napas dalam kurun waktu 24 jam sebelum serangan?")
+
+    if st.button("Proses Lanjutan"):
+
+        q7a = 1 if q7a == "Tidak" else 0
+        q7b = 1 if q7b == "Tidak" else 0
+
+        if q7a == 1 and q7b == 1:
+            diagnosis_lanjutan = "Kejang tanpa provokasi (spontan)"
+        elif q7a == 0 and q7b == 1:
+            diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
+        elif q7a == 1 and q7b == 0:
+            diagnosis_lanjutan = "Kejang simptomatik akut"
+        else:
+            diagnosis_lanjutan = "Perlu evaluasi lanjut"
+
+        st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
+        st.session_state.step = 3
+        st.rerun()
+
+# =====================================================
+# STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
+# =====================================================
+if st.session_state.step == 3:
+
+    st.subheader("Pertanyaan 8")
+
+    # =========================
+    # 8.a
+    # =========================
+    q8a = st.radio(
+        "8.a. Apakah serangan terjadi satu kali?",
+        ["Tidak", "Ya"],
+        key="q8a"
+    )
+
+    # =========================
+    # 8.b (muncul jika 8.a = Ya)
+    # =========================
+    if q8a == "Ya":
+        q8b = st.radio(
+            "8.b. Apakah kejang terjadi lebih dari satu kali?",
+            ["Tidak", "Ya"],
+            key="q8b"
+        )
+    else:
+        st.session_state.q8b = "Belum dijawab"
+
+    # =========================
+    # 8.c (muncul jika 8.b = Ya)
+    # =========================
+    if q8a == "Ya" and st.session_state.q8b == "Ya":
+        q8c = st.radio(
+            "8.c. Apakah interval antar serangan lebih dari 24 jam?",
+            [ "Tidak", "Ya"],
+            key="q8c"
+        )
+    else:
+        st.session_state.q8c = "Belum dijawab"
+
+    st.markdown("---")
+
+    # =========================
+    # TOMBOL SELALU MUNCUL
+    # =========================
+    if st.button("Proses Pertanyaan 8"):
+
+        # Validasi lengkap dulu
+        if st.session_state.q8a == "Belum dijawab":
+            st.warning("Pertanyaan 8.a belum dijawab")
+            st.stop()
+
+        if st.session_state.q8a == "Ya" and st.session_state.q8b == "Belum dijawab":
+            st.warning("Pertanyaan 8.b belum dijawab")
+            st.stop()
+
+        if (
+            st.session_state.q8a == "Ya"
+            and st.session_state.q8b == "Ya"
+            and st.session_state.q8c == "Belum dijawab"
+        ):
+            st.warning("Pertanyaan 8.c belum dijawab")
+            st.stop()
+
+        # =========================
+        # SCORING
+        # =========================
+        skor8a = 1 if st.session_state.q8a == "Ya" else 0
+        skor8b = 1 if st.session_state.q8b == "Ya" else 0
+        skor8c = 1 if st.session_state.q8c == "Ya" else 0
+
+        # =========================
+        # RULE DIAGNOSIS
+        # =========================
+        if skor8a == 1 and skor8b == 0 and skor8c == 0:
+            hasil8 = "First Unprovoked Seizure (FUS)"
+            next_step = 6
+
+        elif skor8a == 1 and skor8b == 1:
+            hasil8 = "Kemungkinan mengalami epilepsi"
+            next_step = 4
+
+        else:
+            hasil8 = "Tidak memenuhi kriteria"
+            next_step = 6
+
+        st.session_state.hasil8 = hasil8
+        st.session_state.step = next_step
+        st.rerun()
+# =====================================================
+# STEP 4 — PERTANYAAN 9
+# =====================================================
+# =====================================================
+# STEP 4 — PERTANYAAN 9 (UPDATED)
+# =====================================================
+elif st.session_state.step == 4:
+
+    st.success(f"Hasil Pertanyaan 8 adalah: **{st.session_state.hasil8}**")
+
+    if st.session_state.hasil8 != "Kemungkinan mengalami epilepsi":
+        st.session_state.step = 6
+        st.rerun()
+
+    st.header("Pertanyaan 9")
+
+    # =========================
+    # 9.a
+    # =========================
+    q9a = yn("9.a Apakah serangan terjadi pada satu sisi tubuh?")
+
+    # =========================
+    # 9.b
+    # =========================
+    q9b = yn("9.b Apakah kepala, wajah, dan mata miring pada satu sisi?")
+
+    # =========================
+    # 9.c (MULTIPLE CHECKLIST)
+    # =========================
+    st.markdown("### 9.c Apakah sesaat sebelum serangan didahului oleh gejala berikut?")
+
+    q9c = st.multiselect(
+        "Pilih gejala yang dialami:",
+        [
+            "Perubahan perilaku",
+            "Mual-muntah",
+            "Sakit perut berulang atau rasa tidak nyaman di ulu hati",
+            "Penciuman dan pengecapan aneh",
+            "Melihat bayangan benda, cahaya lampu berkedip atau warna pelangi, benda tampak lebih besar, lebih kecil atau berubah bentuk"
+        ],
+        key="q9c"
+    )
+
+    # =========================
+    # 9.d
+    # =========================
+    q9d = yn("9.d Apakah serangan diawali pada satu sisi tubuh kemudian pada kedua sisi tubuh?")
+
+    st.markdown("---")
+
+    if st.button("Proses Pertanyaan 9"):
+
+        q9a, q9b, q9d = map(conv, [q9a, q9b, q9d])
+
+        # Jika ada minimal 1 aura di 9c → True
+        ada_aura = len(q9c) > 0
+
+        # =========================
+        # RULE KEJANG FOKAL
+        # =========================
+        if q9a and q9b:
+
+            tipe9 = "Kejang Fokal"
+
+            if q9d:
+                tipe9 = "Focal to Bilateral Tonic Clonic"
+
+        elif ada_aura:
+            tipe9 = "Kejang Fokal (berdasarkan gejala aura)"
+
+        else:
+            tipe9 = "Tidak memenuhi kriteria kejang fokal"
+
+        st.session_state.tipe9 = tipe9
+        st.session_state.step = 5
+        st.rerun()
+
+# =====================================================
+# STEP 5 — PERTANYAAN 10 (KEJANG UMUM SESUAI RULE AWAL)
+# =====================================================
+elif st.session_state.step == 5:
+
+    st.success(f"Hasil Pertanyaan 9 adalah: **{st.session_state.tipe9}**")
+
+    st.header("Pertanyaan 10 (Kejang Umum)")
+
+    q10a = yn("10.a Apakah serangan terjadi pada kedua sisi tubuh?")
+    q10b = yn("10.b Apakah pasca serangan anak mengompol?")
+    q10c = yn("""10.c Apakah saat serangan terjadi Wajah dan bibir membiru atau Mulut mengunci atau Kedua mata berdeviasi ke atas?""")
+
+    if st.button("Proses Pertanyaan 10"):
+
+        q10a, q10b, q10c = map(conv, [q10a, q10b, q10c])
+
+        # =========================
+        # RULE SESUAI PERMINTAAN
+        # =========================
+        if q10a == 1:
+            tipe10 = "Kejang Umum"
+        else:
+            tipe10 = "Tidak memenuhi kriteria Kejang Umum"
+
+        st.session_state.tipe10 = tipe10
+        st.session_state.step = 6
+        st.rerun()
+
+# =====================================================
+# STEP 6 — HASIL AKHIR + SIMPAN RIWAYAT
+# =====================================================
+elif st.session_state.step == 6:
+
+    st.success("📋 HASIL AKHIR DIAGNOSIS")
+
+    diagnosis_final = {
+        "Tanggal": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "User": st.session_state.username,
+        "Diagnosis Awal": st.session_state.get("diagnosis_awal",""),
+        "Diagnosis Lanjutan": st.session_state.get("diagnosis_lanjutan",""),
+        "Hasil 8": st.session_state.get("hasil8",""),
+        "Tipe Fokal": st.session_state.get("tipe9",""),
+        "Tipe Umum": st.session_state.get("tipe10","")
+    }
+
+    st.write(diagnosis_final)
+
+    if st.button("Simpan ke Riwayat"):
+
+        # Simpan ke history
+        st.session_state.history.append(diagnosis_final)
+
+        # =========================
+        # RESET SEMUA HASIL DIAGNOSIS
+        # =========================
+        for key in [
+            "diagnosis_awal",
+            "diagnosis_lanjutan",
+            "hasil8",
+            "tipe9",
+            "tipe10",
+            "q8a","q8b","q8c",
+            "q9c"
+        ]:
+            if key in st.session_state:
+                del st.session_state[key]
+
+        # Kembali ke awal
+        st.session_state.step = 1
+
+        st.success("Berhasil disimpan & form direset")
+        st.rerun()
+
+# =====================================================
+# RIWAYAT DIAGNOSIS
+# =====================================================
+if st.session_state.history:
+
+    st.divider()
+    st.header("📁 Riwayat Diagnosis")
+
+    df_history = pd.DataFrame(st.session_state.history)
+    df_user = df_history[df_history["User"] == st.session_state.username]
+
+    st.dataframe(df_user, use_container_width=True)
+
+    csv = df_user.to_csv(index=False).encode("utf-8")
+
+    st.download_button(
+        label="⬇ Download Riwayat (CSV)",
+        data=csv,
+        file_name="riwayat_diagnosis.csv",
+        mime="text/csv"
+    )
