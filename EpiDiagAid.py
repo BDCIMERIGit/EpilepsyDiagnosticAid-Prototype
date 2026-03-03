@@ -131,6 +131,15 @@ div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     font-family: monospace;
 }
 
+/* opsi ke-5 jadi lebih tinggi */
+div[data-baseweb="popover"] li:nth-child(5) {
+    white-space: normal !important;
+    line-height: 1.4 !important;
+    min-height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
 /* ================= REMOVE TOP PADDING ================= */
 .block-container {
     padding-top: 1rem;
