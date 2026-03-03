@@ -10,7 +10,7 @@ st.markdown("""
 <style>
 /* Background */
 .stApp {
-    background: linear-gradient(180deg, #d9dbde, #b8bdbf);
+    background: #ffffff;
 }
 
 /* Main card */
@@ -23,9 +23,15 @@ st.markdown("""
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
 }
 
+/* Semua teks jadi hitam */
+html, body, [class*="css"]  {
+    color: #000000 !important;
+}
+
 /* Header text */
 h1, h2, h3 {
     text-align: center;
+    color: #000000;
 }
 
 /* Buttons */
@@ -38,26 +44,35 @@ h1, h2, h3 {
     color: white;
 }
 
-/* Radio buttons horizontal */
-div[role="radiogroup"] {
-    justify-content: center;
-}
-
 /* Progress text */
 .progress-text {
     text-align: center;
     font-weight: bold;
-    color: #0f0f0f;
+    color: #000000;
     margin-bottom: 10px;
 }
 
-/* Remove Streamlit padding */
+/* === KOTAK UNTUK SETIAP PERTANYAAN === */
+.stRadio, .stMultiselect {
+    border: 1px solid #d0d0d0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    background-color: #fafafa;
+}
+
+/* Label pertanyaan */
+label {
+    font-weight: 600;
+    color: #000000;
+}
+
+/* Hilangkan padding default */
 .block-container {
     padding-top: 1rem;
 }
 </style>
 """, unsafe_allow_html=True)
-
 # =====================================================
 # CONFIG
 # =====================================================
