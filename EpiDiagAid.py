@@ -410,7 +410,8 @@ elif st.session_state.step == 4:
             "Mual-muntah",
             "Sakit perut berulang atau rasa tidak nyaman di ulu hati",
             "Penciuman dan pengecapan aneh",
-            "Melihat bayangan benda, cahaya lampu berkedip atau warna pelangi, benda tampak lebih besar, lebih kecil atau berubah bentuk"
+            "Melihat bayangan benda, cahaya lampu berkedip atau warna pelangi,\n"
+            "benda tampak lebih besar, lebih kecil atau berubah bentuk"
         ],
         key="q9c"
     )
