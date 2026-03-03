@@ -51,13 +51,30 @@ body, p, span, div, label, h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
 }
 
-/* === KOTAK UNTUK SETIAP PERTANYAAN === */
-.stRadio, .stMultiselect {
+/* Kotak radio (pertanyaan biasa) */
+.stRadio {
     border: 1px solid #cfcfcf;
     border-radius: 12px;
     padding: 10px 12px;
     margin-bottom: 12px;
     background-color: #f9f9f9;
+}
+
+/* === KHUSUS PERTANYAAN 9.c (MULTISELECT) → ABU-ABU === */
+.stMultiSelect {
+    border: 1px solid #b0b0b0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    background-color: #e0e0e0 !important;
+}
+
+/* === KOTAK HASIL AKHIR DIAGNOSIS → HIJAU MUDA === */
+.stAlertSuccess {
+    background-color: #d4edda !important;
+    border: 1px solid #a3cfbb !important;
+    color: #000000 !important;
+    border-radius: 12px;
 }
 
 /* Label pertanyaan */
