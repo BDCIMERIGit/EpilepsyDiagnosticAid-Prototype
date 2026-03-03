@@ -73,17 +73,16 @@ body, p, span, div, label, h1, h2, h3, h4 {
 }
 
 /* === HASIL AKHIR (DICT OUTPUT st.write) → HIJAU MUDA === */
-div[data-testid="stCodeBlock"] {
+/* === HASIL AKHIR (DICT OUTPUT) → HIJAU MUDA (FORCE) === */
+div[data-testid="stCodeBlock"],
+div[data-testid="stCodeBlock"] pre,
+div[data-testid="stCodeBlock"] code,
+pre, code {
     background-color: #d4edda !important;  /* hijau muda */
     color: #000000 !important;
-    border-radius: 12px;
+    border-radius: 12px !important;
+    border: 1px solid #a3cfbb !important;
     padding: 16px !important;
-    border: 1px solid #a3cfbb;
-}
-
-/* Warna teks di dalam code block */
-div[data-testid="stCodeBlock"] code {
-    color: #000000 !important;
 }
 
 /* Remove padding default */
