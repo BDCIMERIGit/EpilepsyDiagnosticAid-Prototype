@@ -55,13 +55,16 @@ body, p, span, div, label, h1, h2, h3, h4 {
     background-color: #f9f9f9;
 }
 
-/* === KHUSUS PERTANYAAN 9.c (MULTISELECT) → ABU-ABU === */
-.stMultiSelect {
-    border: 1px solid #b0b0b0;
-    border-radius: 12px;
-    padding: 10px 12px;
-    margin-bottom: 12px;
+/* === KHUSUS MULTISELECT (PERTANYAAN 9c) → ABU-ABU MUDA === */
+div[data-baseweb="select"] > div {
     background-color: #e0e0e0 !important;
+    border-radius: 12px !important;
+    border: 1px solid #b0b0b0 !important;
+}
+
+/* teks di dalam multiselect */
+div[data-baseweb="select"] span {
+    color: #000000 !important;
 }
 
 /* === KOTAK HASIL AKHIR DIAGNOSIS → HIJAU MUDA === */
