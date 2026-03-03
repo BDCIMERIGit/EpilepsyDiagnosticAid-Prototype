@@ -8,12 +8,12 @@ from datetime import datetime
 
 st.markdown("""
 <style>
-/* Background */
+/* ================= BACKGROUND ================= */
 .stApp {
     background: #ffffff;
 }
 
-/* Main card */
+/* ================= MAIN CARD ================= */
 .main > div {
     background: white;
     border-radius: 24px;
@@ -23,12 +23,12 @@ st.markdown("""
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
 }
 
-/* FORCE semua font jadi hitam */
+/* ================= FORCE TEXT HITAM ================= */
 body, p, span, div, label, h1, h2, h3, h4 {
     color: #000000 !important;
 }
 
-/* Buttons */
+/* ================= BUTTON ================= */
 .stButton > button {
     width: 100%;
     border-radius: 12px;
@@ -38,15 +38,7 @@ body, p, span, div, label, h1, h2, h3, h4 {
     color: white !important;
 }
 
-/* Progress text */
-.progress-text {
-    text-align: center;
-    font-weight: bold;
-    color: #000000 !important;
-    margin-bottom: 10px;
-}
-
-/* Kotak radio (pertanyaan biasa) */
+/* ================= RADIO ================= */
 .stRadio {
     border: 1px solid #cfcfcf;
     border-radius: 12px;
@@ -55,42 +47,61 @@ body, p, span, div, label, h1, h2, h3, h4 {
     background-color: #f9f9f9;
 }
 
-/* === MULTISELECT (PERTANYAAN 9c) → ABU-ABU MUDA === */
+/* ================= MULTISELECT BOX ================= */
 div[data-baseweb="select"] > div {
     background-color: #e5e5e5 !important;
     border: 1px solid #b0b0b0 !important;
     border-radius: 12px !important;
 }
 
-/* teks di dalam multiselect */
+/* teks dalam multiselect */
 div[data-baseweb="select"] span {
     color: #000000 !important;
 }
 
-/* === DROPDOWN LIST BACKGROUND === */
-ul[role="listbox"] {
+/* ================= POPUP PANEL ================= */
+div[data-baseweb="popover"] > div {
+    background-color: #e5e5e5 !important;
+    border-radius: 12px !important;
+    border: 1px solid #b0b0b0 !important;
+}
+
+/* list container */
+div[data-baseweb="popover"] ul {
     background-color: #e5e5e5 !important;
 }
 
-/* === ITEM TEKS === */
-ul[role="listbox"] li {
+/* item default */
+div[data-baseweb="popover"] li {
     background-color: #e5e5e5 !important;
     color: #000000 !important;
 }
 
-/* === ITEM HOVER (LEBIH MUDA) === */
-div[data-baseweb="popover"] li:hover {
-    background-color: #f0f0f0 !important;  /* abu-abu muda */
+/* ================= HOVER (ABU MUDA) ================= */
+div[data-baseweb="popover"] li:hover,
+div[data-baseweb="popover"] li[data-highlighted="true"] {
+    background-color: #f0f0f0 !important;
     color: #000000 !important;
 }
 
-/* === TEKS YANG SUDAH DIPILIH === */
+/* ================= ITEM TERPILIH ================= */
+div[data-baseweb="popover"] li[aria-selected="true"] {
+    background-color: #d0d0d0 !important;
+    color: #000000 !important;
+}
+
+/* ================= TAG TERPILIH ================= */
 div[data-baseweb="tag"] {
     background-color: #cfcfcf !important;
     color: #000000 !important;
 }
 
-/* === KOTAK HASIL AKHIR DIAGNOSIS → HIJAU MUDA === */
+/* ================= SCROLLBAR ================= */
+div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
+    background-color: #bbbbbb !important;
+}
+
+/* ================= ALERT SUCCESS ================= */
 .stAlertSuccess {
     background-color: #d4edda !important;
     border: 1px solid #a3cfbb !important;
@@ -98,7 +109,7 @@ div[data-baseweb="tag"] {
     border-radius: 12px;
 }
 
-/* === HASIL AKHIR DIAGNOSIS → HIJAU MUDA (PASTI JADI) === */
+/* ================= HASIL DIAGNOSIS ================= */
 .hasil-diagnosis {
     background-color: #d4edda;
     border: 1px solid #a3cfbb;
@@ -116,52 +127,13 @@ div[data-baseweb="tag"] {
     font-family: monospace;
 }
 
-/* === MULTISELECT (PERTANYAAN 9c) === */
-div[data-baseweb="select"] > div {
-    background-color: #e5e5e5 !important;
-    border: 1px solid #b0b0b0 !important;
-    border-radius: 12px !important;
-}
-
-div[data-baseweb="select"] span {
-    color: #000000 !important;
-}
-
-/* === POPUP PANEL MULTISELECT === */
-div[data-baseweb="popover"] > div {
-    background-color: #e5e5e5 !important;
-    border-radius: 12px !important;
-    border: 1px solid #b0b0b0 !important;
-}
-
-div[data-baseweb="popover"] ul {
-    background-color: #e5e5e5 !important;
-}
-
-div[data-baseweb="popover"] li {
-    background-color: #e5e5e5 !important;
-    color: #000000 !important;
-}
-
-/* === HOVER (ABU MUDA) === */
-div[data-baseweb="popover"] li:hover,
-div[data-baseweb="popover"] li[data-highlighted="true"] {
-    background-color: #f0f0f0 !important;
-    color: #000000 !important;
-}
-
-/* === ITEM TERPILIH === */
-div[data-baseweb="popover"] li[aria-selected="true"] {
-    background-color: #bdbdbd !important;
-    color: #000000 !important;
-}
-
-/* Remove padding default */
+/* ================= REMOVE TOP PADDING ================= */
 .block-container {
     padding-top: 1rem;
 }
 </style>
 """, unsafe_allow_html=True)
+
 # =====================================================
 # CONFIG
 # =====================================================
