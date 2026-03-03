@@ -10,7 +10,7 @@ st.markdown("""
 <style>
 /* Background */
 .stApp {
-    background: linear-gradient(180deg, #2f80ed, #56ccf2);
+    background: linear-gradient(180deg, #d9dbde, #b8bdbf);
 }
 
 /* Main card */
