@@ -140,6 +140,20 @@ div[data-baseweb="popover"] li {
     align-items: flex-start !important;
 }
 
+/* === PAKSA TEKS OPTION MULTISELECT JADI MULTI LINE === */
+div[data-baseweb="popover"] div[role="option"] span {
+    white-space: normal !important;
+    display: block !important;
+    line-height: 1.4 !important;
+}
+
+div[data-baseweb="popover"] div[role="option"] {
+    align-items: flex-start !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    min-height: 60px !important;
+}
+
 /* ================= REMOVE TOP PADDING ================= */
 .block-container {
     padding-top: 1rem;
