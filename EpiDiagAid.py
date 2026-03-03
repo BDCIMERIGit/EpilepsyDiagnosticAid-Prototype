@@ -23,15 +23,14 @@ st.markdown("""
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
 }
 
-/* Semua teks jadi hitam */
-html, body, [class*="css"]  {
+/* === FORCE SEMUA FONT JADI HITAM === */
+body, p, span, div, label, h1, h2, h3, h4, h5, h6 {
     color: #000000 !important;
 }
 
-/* Header text */
-h1, h2, h3 {
-    text-align: center;
-    color: #000000;
+/* Khusus teks Streamlit widget */
+.stMarkdown, .stText, .stRadio label, .stCheckbox label, .stSelectbox label, .stMultiselect label {
+    color: #000000 !important;
 }
 
 /* Buttons */
@@ -41,33 +40,33 @@ h1, h2, h3 {
     height: 48px;
     font-size: 16px;
     background-color: #2f80ed;
-    color: white;
+    color: white !important;
 }
 
 /* Progress text */
 .progress-text {
     text-align: center;
     font-weight: bold;
-    color: #000000;
+    color: #000000 !important;
     margin-bottom: 10px;
 }
 
 /* === KOTAK UNTUK SETIAP PERTANYAAN === */
 .stRadio, .stMultiselect {
-    border: 1px solid #d0d0d0;
+    border: 1px solid #cfcfcf;
     border-radius: 12px;
     padding: 10px 12px;
     margin-bottom: 12px;
-    background-color: #fafafa;
+    background-color: #f9f9f9;
 }
 
 /* Label pertanyaan */
 label {
     font-weight: 600;
-    color: #000000;
+    color: #000000 !important;
 }
 
-/* Hilangkan padding default */
+/* Remove padding default */
 .block-container {
     padding-top: 1rem;
 }
