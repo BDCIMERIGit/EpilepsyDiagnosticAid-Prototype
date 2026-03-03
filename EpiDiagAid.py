@@ -71,21 +71,25 @@ div[data-baseweb="popover"] ul {
     background-color: #e5e5e5 !important;
 }
 
-/* item default */
-div[data-baseweb="popover"] li {
+/* ================= ITEM DEFAULT ================= */
+div[data-baseweb="popover"] li,
+div[data-baseweb="popover"] div[role="option"] {
     background-color: #e5e5e5 !important;
     color: #000000 !important;
 }
 
 /* ================= HOVER (ABU MUDA) ================= */
 div[data-baseweb="popover"] li:hover,
-div[data-baseweb="popover"] li[data-highlighted="true"] {
-    background-color: #f0f0f0 !important;
+div[data-baseweb="popover"] div[role="option"]:hover,
+div[data-baseweb="popover"] li[data-highlighted="true"],
+div[data-baseweb="popover"] div[role="option"][aria-selected="false"] {
+    background-color: #f2f2f2 !important;
     color: #000000 !important;
 }
 
 /* ================= ITEM TERPILIH ================= */
-div[data-baseweb="popover"] li[aria-selected="true"] {
+div[data-baseweb="popover"] li[aria-selected="true"],
+div[data-baseweb="popover"] div[role="option"][aria-selected="true"] {
     background-color: #d0d0d0 !important;
     color: #000000 !important;
 }
