@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # =====================================================
-# Styling
+# Styling UI
 # =====================================================
 
 st.markdown("""
@@ -136,10 +136,9 @@ def conv(x):
 # =====================================================
 # STEP 1 — PERTANYAAN 1–6
 # =====================================================
-st.markdown('<div class="progress-text">1 / 6</div>', unsafe_allow_html=True)
 
 if st.session_state.step == 1:
-
+    st.markdown('<div class="progress-text">1 / 6</div>', unsafe_allow_html=True)
     st.header("Pertanyaan 1 – 6")
 
     q1 = yn("1. Apakah serangan terjadi tiba-tiba?")
@@ -170,10 +169,9 @@ if st.session_state.step == 1:
 # =====================================================
 # STEP 2 — HASIL AWAL + PERTANYAAN 7
 # =====================================================
-st.markdown('<div class="progress-text">2 / 6</div>', unsafe_allow_html=True)
 
 elif st.session_state.step == 2:
-
+    st.markdown('<div class="progress-text">2 / 6</div>', unsafe_allow_html=True)
     st.success(f"Diagnosis Awal adalah: **{st.session_state.diagnosis_awal}**")
 
     if st.session_state.diagnosis_awal == "Bukan Kejang":
@@ -206,10 +204,9 @@ elif st.session_state.step == 2:
 # =====================================================
 # STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
 # =====================================================
-st.markdown('<div class="progress-text">3 / 6</div>', unsafe_allow_html=True)
 
 if st.session_state.step == 3:
-
+    st.markdown('<div class="progress-text">3 / 6</div>', unsafe_allow_html=True)
     st.subheader("Pertanyaan 8")
 
     # =========================
@@ -300,10 +297,9 @@ if st.session_state.step == 3:
 # =====================================================
 # STEP 4 — PERTANYAAN 9 (UPDATED)
 # =====================================================
-st.markdown('<div class="progress-text">4 / 6</div>', unsafe_allow_html=True)
 
 elif st.session_state.step == 4:
-
+    st.markdown('<div class="progress-text">4 / 6</div>', unsafe_allow_html=True)
     st.success(f"Hasil Pertanyaan 8 adalah: **{st.session_state.hasil8}**")
 
     if st.session_state.hasil8 != "Kemungkinan mengalami epilepsi":
@@ -376,10 +372,9 @@ elif st.session_state.step == 4:
 # =====================================================
 # STEP 5 — PERTANYAAN 10 (KEJANG UMUM SESUAI RULE AWAL)
 # =====================================================
-st.markdown('<div class="progress-text">5 / 6</div>', unsafe_allow_html=True)
 
 elif st.session_state.step == 5:
-
+    st.markdown('<div class="progress-text">5 / 6</div>', unsafe_allow_html=True)
     st.success(f"Hasil Pertanyaan 9 adalah: **{st.session_state.tipe9}**")
 
     st.header("Pertanyaan 10 (Kejang Umum)")
@@ -407,10 +402,9 @@ elif st.session_state.step == 5:
 # =====================================================
 # STEP 6 — HASIL AKHIR + SIMPAN RIWAYAT
 # =====================================================
-st.markdown('<div class="progress-text">6 / 6</div>', unsafe_allow_html=True)
 
 elif st.session_state.step == 6:
-
+    st.markdown('<div class="progress-text">6 / 6</div>', unsafe_allow_html=True)
     st.success("📋 HASIL AKHIR DIAGNOSIS")
 
     diagnosis_final = {
