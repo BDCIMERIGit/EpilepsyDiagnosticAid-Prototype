@@ -131,14 +131,13 @@ div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     font-family: monospace;
 }
 
-/* opsi ke-5 jadi lebih tinggi (li + role=option) */
-div[data-baseweb="popover"] li:nth-child(5),
-div[data-baseweb="popover"] div[role="option"]:nth-child(5) {
+/* semua opsi bisa multiline & tinggi otomatis */
+div[data-baseweb="popover"] div[role="option"],
+div[data-baseweb="popover"] li {
     white-space: normal !important;
     line-height: 1.4 !important;
-    min-height: 70px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    min-height: 60px !important;
+    align-items: flex-start !important;
 }
 
 /* ================= REMOVE TOP PADDING ================= */
