@@ -439,7 +439,6 @@ elif st.session_state.step == 4:
     for o in opsi9c:
         if st.checkbox(o, key=f"q9c_{o}"):
             q9c.append(o)
-    )
 
     # =========================
     # 9.d
