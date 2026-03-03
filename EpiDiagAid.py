@@ -72,6 +72,20 @@ body, p, span, div, label, h1, h2, h3, h4 {
     border-radius: 12px;
 }
 
+/* === HASIL AKHIR (DICT OUTPUT st.write) → HIJAU MUDA === */
+div[data-testid="stCodeBlock"] {
+    background-color: #d4edda !important;  /* hijau muda */
+    color: #000000 !important;
+    border-radius: 12px;
+    padding: 16px !important;
+    border: 1px solid #a3cfbb;
+}
+
+/* Warna teks di dalam code block */
+div[data-testid="stCodeBlock"] code {
+    color: #000000 !important;
+}
+
 /* Remove padding default */
 .block-container {
     padding-top: 1rem;
