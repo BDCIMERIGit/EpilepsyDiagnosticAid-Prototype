@@ -458,7 +458,7 @@ elif st.session_state.step == 6:
     # Ubah dict jadi teks baris per baris
     hasil_teks = ""
     for k, v in diagnosis_final.items():
-        hasil_teks += f"{k} : {v}\n"
+        hasil_teks += f"{k} : {v}<br>"
 
     st.markdown("### 📋 HASIL AKHIR DIAGNOSIS")
 
