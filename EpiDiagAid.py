@@ -3,6 +3,62 @@ import pandas as pd
 from datetime import datetime
 
 # =====================================================
+# Styling
+# =====================================================
+
+st.markdown("""
+<style>
+/* Background */
+.stApp {
+    background: linear-gradient(180deg, #2f80ed, #56ccf2);
+}
+
+/* Main card */
+.main > div {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    max-width: 420px;
+    margin: auto;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Header text */
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Buttons */
+.stButton > button {
+    width: 100%;
+    border-radius: 12px;
+    height: 48px;
+    font-size: 16px;
+    background-color: #2f80ed;
+    color: white;
+}
+
+/* Radio buttons horizontal */
+div[role="radiogroup"] {
+    justify-content: center;
+}
+
+/* Progress text */
+.progress-text {
+    text-align: center;
+    font-weight: bold;
+    color: #2f80ed;
+    margin-bottom: 10px;
+}
+
+/* Remove Streamlit padding */
+.block-container {
+    padding-top: 1rem;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# =====================================================
 # CONFIG
 # =====================================================
 st.set_page_config(page_title="Skrining Kejang Anak", layout="centered")
@@ -80,6 +136,8 @@ def conv(x):
 # =====================================================
 # STEP 1 — PERTANYAAN 1–6
 # =====================================================
+st.markdown('<div class="progress-text">1 / 6</div>', unsafe_allow_html=True)
+
 if st.session_state.step == 1:
 
     st.header("Pertanyaan 1 – 6")
@@ -112,6 +170,8 @@ if st.session_state.step == 1:
 # =====================================================
 # STEP 2 — HASIL AWAL + PERTANYAAN 7
 # =====================================================
+st.markdown('<div class="progress-text">2 / 6</div>', unsafe_allow_html=True)
+
 elif st.session_state.step == 2:
 
     st.success(f"Diagnosis Awal adalah: **{st.session_state.diagnosis_awal}**")
@@ -146,6 +206,8 @@ elif st.session_state.step == 2:
 # =====================================================
 # STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
 # =====================================================
+st.markdown('<div class="progress-text">3 / 6</div>', unsafe_allow_html=True)
+
 if st.session_state.step == 3:
 
     st.subheader("Pertanyaan 8")
@@ -238,6 +300,8 @@ if st.session_state.step == 3:
 # =====================================================
 # STEP 4 — PERTANYAAN 9 (UPDATED)
 # =====================================================
+st.markdown('<div class="progress-text">4 / 6</div>', unsafe_allow_html=True)
+
 elif st.session_state.step == 4:
 
     st.success(f"Hasil Pertanyaan 8 adalah: **{st.session_state.hasil8}**")
@@ -312,6 +376,8 @@ elif st.session_state.step == 4:
 # =====================================================
 # STEP 5 — PERTANYAAN 10 (KEJANG UMUM SESUAI RULE AWAL)
 # =====================================================
+st.markdown('<div class="progress-text">5 / 6</div>', unsafe_allow_html=True)
+
 elif st.session_state.step == 5:
 
     st.success(f"Hasil Pertanyaan 9 adalah: **{st.session_state.tipe9}**")
@@ -341,6 +407,8 @@ elif st.session_state.step == 5:
 # =====================================================
 # STEP 6 — HASIL AKHIR + SIMPAN RIWAYAT
 # =====================================================
+st.markdown('<div class="progress-text">6 / 6</div>', unsafe_allow_html=True)
+
 elif st.session_state.step == 6:
 
     st.success("📋 HASIL AKHIR DIAGNOSIS")
