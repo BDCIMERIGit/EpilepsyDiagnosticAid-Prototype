@@ -38,6 +38,21 @@ body, p, span, div, label, h1, h2, h3, h4 {
     color: white !important;
 }
 
+/* ================= DOWNLOAD BUTTON ================= */
+.stDownloadButton > button {
+    color: white !important;
+    background-color: #111827;
+    border-radius: 12px;
+    height: 48px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.stDownloadButton > button:hover {
+    background-color: #1f2937;
+    color: white !important;
+}
+
 /* ================= RADIO ================= */
 .stRadio {
     border: 1px solid #cfcfcf;
