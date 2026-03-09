@@ -251,7 +251,7 @@ if st.session_state.step == 1:
     q4a = yn("4.a [usia >= 1 thn] Pasca serangan: Anak tidak dapat mengingat kejadian yang telah dialami?")
     q4b = yn("4.b [usia >= 1 thn] Pasca serangan: Anak tampak kebingungan??")
     q4c = yn("4.c [usia < 1 thn] Pasca serangan: Anak tampak lemas, mengantuk atau tidur?")
-    q5 = yn("5.Apakah serangan terjadi berulang (repetitif) dengan pola yang sama (stereotipik) dan terus menerus tanpa jeda?")
+    q5 = yn("5.Apakah serangan terjadi berulang (repetitif) dengan pola yang sama (stereotipik) atau terus menerus tanpa jeda?")
     q6a = yn("6.a Apakah serangan berlangsung selama <2 menit?")
     q6b = yn("6.b Apakah serangan berlangsung selama ≥ 2 menit?")
 
@@ -292,7 +292,7 @@ elif st.session_state.step == 2:
         q7b = 1 if q7b == "Tidak" else 0
 
         if q7a == 1 and q7b == 1:
-            diagnosis_lanjutan = "Kejang tanpa provokasi (spontan)"
+            diagnosis_lanjutan = "First unprovoked seizure (FUS)"
         elif q7a == 0 and q7b == 1:
             diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
         elif q7a == 1 and q7b == 0:
@@ -388,7 +388,7 @@ if st.session_state.step == 3:
             next_step = 4
 
         else:
-            hasil8 = "Tidak memenuhi kriteria"
+            hasil8 = "First Unprovoked Seizure (FUS)"
             next_step = 6
 
         st.session_state.hasil8 = hasil8
