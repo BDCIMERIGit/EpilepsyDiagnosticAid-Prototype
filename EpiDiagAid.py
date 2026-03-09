@@ -410,11 +410,11 @@ if st.session_state.step == 3:
         # =========================
         # RULE DIAGNOSIS
         # =========================
-        if skor8a == 1 and skor8b == 0 and skor8c == 0:
+        if skor8a == 1 and skor8c == 0:
             hasil8 = "First Unprovoked Seizure (FUS)"
             next_step = 6
 
-        elif skor8a == 1 and skor8b == 1:
+        elif skor8b == 1 and skor8c == 1:
             hasil8 = "Kemungkinan mengalami epilepsi"
             next_step = 4
 
