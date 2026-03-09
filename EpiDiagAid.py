@@ -39,18 +39,18 @@ body, p, span, div, label, h1, h2, h3, h4 {
 }
 
 /* ================= DOWNLOAD BUTTON ================= */
-.stDownloadButton > button {
-    color: white !important;
-    background-color: #111827;
+div.stDownloadButton > button {
+    color: #ffffff !important;
+    background-color: #111827 !important;
     border-radius: 12px;
     height: 48px;
     font-size: 16px;
-    width: 100%;
+    font-weight: 600;
 }
 
-.stDownloadButton > button:hover {
-    background-color: #1f2937;
-    color: white !important;
+div.stDownloadButton > button:hover {
+    color: #ffffff !important;
+    background-color: #1f2937 !important;
 }
 
 /* ================= RADIO ================= */
