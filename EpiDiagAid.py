@@ -40,17 +40,17 @@ body, p, span, div, label, h1, h2, h3, h4 {
 
 /* ================= DOWNLOAD BUTTON ================= */
 div.stDownloadButton > button {
-    color: #ffffff !important;
-    background-color: #111827 !important;
+    width: 100%;
     border-radius: 12px;
     height: 48px;
     font-size: 16px;
+    background-color: #5cc8a1 !important;
+    color: white !important;
     font-weight: 600;
 }
 
 div.stDownloadButton > button:hover {
-    color: #ffffff !important;
-    background-color: #1f2937 !important;
+    background-color: #4db892 !important;
 }
 
 /* ================= RADIO ================= */
