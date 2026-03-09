@@ -327,7 +327,7 @@ elif st.session_state.step == 2:
             st.rerun()
 
 # =====================================================
-# STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
+# STEP 3 — PERTANYAAN 8
 # =====================================================
 
 if st.session_state.step == 3:
@@ -344,28 +344,22 @@ if st.session_state.step == 3:
     )
 
     # =========================
-    # 8.b (muncul jika 8.a = Ya)
+    # 8.b
     # =========================
-    if q8a == "Ya":
-        q8b = st.radio(
-            "8.b. Apakah kejang terjadi lebih dari satu kali?",
-            ["Tidak", "Ya"],
-            key="q8b"
-        )
-    else:
-        st.session_state.q8b = "Belum dijawab"
+    q8b = st.radio(
+        "8.b. Apakah kejang terjadi lebih dari satu kali?",
+        ["Tidak", "Ya"],
+        key="q8b"
+    )
 
     # =========================
-    # 8.c (muncul jika 8.b = Ya)
+    # 8.c
     # =========================
-    if q8a == "Ya" and st.session_state.q8b == "Ya":
-        q8c = st.radio(
-            "8.c. Apakah interval antar serangan lebih dari 24 jam?",
-            [ "Tidak", "Ya"],
-            key="q8c"
-        )
-    else:
-        st.session_state.q8c = "Belum dijawab"
+    q8c = st.radio(
+        "8.c. Apakah interval antar serangan lebih dari 24 jam?",
+        ["Tidak", "Ya"],
+        key="q8c"
+    )
 
     st.markdown("---")
 
@@ -394,9 +388,9 @@ if st.session_state.step == 3:
         # =========================
         # SCORING
         # =========================
-        skor8a = 1 if st.session_state.q8a == "Ya" else 0
-        skor8b = 1 if st.session_state.q8b == "Ya" else 0
-        skor8c = 1 if st.session_state.q8c == "Ya" else 0
+        skor8a = 1 if q8a == "Ya" else 0
+        skor8b = 1 if q8b == "Ya" else 0
+        skor8c = 1 if q8c == "Ya" else 0
 
         # =========================
         # RULE DIAGNOSIS
