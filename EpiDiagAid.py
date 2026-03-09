@@ -277,10 +277,6 @@ elif st.session_state.step == 2:
     st.markdown('<div class="progress-text">2 / 6</div>', unsafe_allow_html=True)
     st.success(f"Diagnosis Awal adalah: **{st.session_state.diagnosis_awal}**")
 
-    if st.session_state.diagnosis_awal == "Bukan Kejang":
-        st.session_state.step = 6
-        st.rerun()
-
     st.header("Pertanyaan 7")
 
     q7a = yn("7.a Apakah serangan dipicu oleh: Nyeri, takut, menangis, bosan, cemas/panik, marah, frustasi, gembira, rileks, sentuhan, usapan, refluks gastro-esofagus, hiperaktif, berdiri terlalu lama, lingkungan tidak nyaman misal cuaca panas terik dll?")
@@ -288,21 +284,47 @@ elif st.session_state.step == 2:
 
     if st.button("Proses Lanjutan"):
 
-        q7a = 1 if q7a == "Tidak" else 0
-        q7b = 1 if q7b == "Tidak" else 0
+        q7a = conv(q7a)
+        q7b = conv(q7b)
 
-        if q7a == 1 and q7b == 1:
-            diagnosis_lanjutan = "First unprovoked seizure (FUS)"
-        elif q7a == 0 and q7b == 1:
-            diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
-        elif q7a == 1 and q7b == 0:
-            diagnosis_lanjutan = "Kejang simptomatik akut"
+        # =========================================
+        # RULE BARU UNTUK "BUKAN KEJANG"
+        # =========================================
+        if st.session_state.diagnosis_awal == "Bukan Kejang":
+
+            if q7a == 1 and q7b == 0:
+                diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
+
+            elif q7b == 1 and q7a == 0:
+                diagnosis_lanjutan = "Kejang Simptomatik Akut"
+
+            else:
+                diagnosis_lanjutan = "Bukan Kejang Tanpa ada Kriteria Lain"
+
+            st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
+            st.session_state.step = 6
+            st.rerun()
+
+        # =========================================
+        # RULE LAMA UNTUK "KEMUNGKINAN KEJANG"
+        # =========================================
         else:
-            diagnosis_lanjutan = "Perlu evaluasi lanjut"
 
-        st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
-        st.session_state.step = 3
-        st.rerun()
+            q7a = 1 if q7a == 0 else 0
+            q7b = 1 if q7b == 0 else 0
+
+            if q7a == 1 and q7b == 1:
+                diagnosis_lanjutan = "First unprovoked seizure (FUS)"
+            elif q7a == 0 and q7b == 1:
+                diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
+            elif q7a == 1 and q7b == 0:
+                diagnosis_lanjutan = "Kejang simptomatik akut"
+            else:
+                diagnosis_lanjutan = "Perlu evaluasi lanjut"
+
+            st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
+            st.session_state.step = 3
+            st.rerun()
 
 # =====================================================
 # STEP 3 — PERTANYAAN 8 (SESUAI RULE RESMI)
