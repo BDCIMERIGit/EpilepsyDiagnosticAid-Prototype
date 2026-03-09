@@ -513,7 +513,7 @@ elif st.session_state.step == 5:
     st.markdown('<div class="progress-text">5 / 6</div>', unsafe_allow_html=True)
     st.success(f"Hasil Pertanyaan 9 adalah: **{st.session_state.tipe9}**")
 
-    st.header("Pertanyaan 10 (Kejang Umum)")
+    st.header("Pertanyaan 10")
 
     q10a = yn("10.a Apakah serangan terjadi pada kedua sisi tubuh?")
     q10b = yn("10.b Apakah pasca serangan anak mengompol?")
