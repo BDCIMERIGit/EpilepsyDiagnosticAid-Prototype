@@ -32,69 +32,19 @@ st.markdown(f"""
 st.markdown("""
 <style>
 
-/* ================= FULL HEIGHT ================= */
-html, body, [data-testid="stAppViewContainer"] {
-    height: 100%;
-}
-
-/* ================= CENTER SEMUA KONTEN ================= */
-[data-testid="block-container"] {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   /* vertikal */
-    align-items: center;       /* horizontal */
-    min-height: 100vh;
-    padding-top: 0 !important;
-}
-
 /* ================= MAIN CARD ================= */
-/* HAPUS BACKGROUND PUTIH GLOBAL */
 .main > div {
-    background: transparent !important;
-    padding: 0 !important;
-}
-
-/* FIX FULL SCREEN TANPA SCROLL */
-html, body, [data-testid="stAppViewContainer"] {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* HAPUS PADDING STREAMLIT */
-[data-testid="block-container"] {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* WRAPPER CENTER */
-.login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh;
-    width: 100%;
-}
-
-/* CARD LOGIN SAJA */
-.login-card {
-    width: 100%;
-    max-width: 420px;
     background: white;
-    padding: 30px;
     border-radius: 24px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    padding: 25px;
+    max-width: 420px;
+    margin: auto;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
 }
 
 /* ================= FORCE TEXT HITAM ================= */
 body, p, span, div, label, h1, h2, h3, h4 {
     color: #000000 !important;
-}
-
-/* ================= INPUT FIELD ================= */
-input {
-    border-radius: 10px !important;
 }
 
 /* ================= BUTTON ================= */
@@ -162,7 +112,7 @@ div[data-baseweb="popover"] div[role="option"] {
     color: #000000 !important;
 }
 
-/* ================= HOVER ================= */
+/* ================= HOVER (ABU MUDA) ================= */
 div[data-baseweb="popover"] li:hover,
 div[data-baseweb="popover"] div[role="option"]:hover,
 div[data-baseweb="popover"] li[data-highlighted="true"],
@@ -215,7 +165,7 @@ div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     font-family: monospace;
 }
 
-/* ================= MULTILINE OPTION ================= */
+/* semua opsi bisa multiline & tinggi otomatis */
 div[data-baseweb="popover"] div[role="option"],
 div[data-baseweb="popover"] li {
     white-space: normal !important;
@@ -224,6 +174,7 @@ div[data-baseweb="popover"] li {
     align-items: flex-start !important;
 }
 
+/* === PAKSA TEKS OPTION MULTISELECT JADI MULTI LINE === */
 div[data-baseweb="popover"] div[role="option"] span {
     white-space: normal !important;
     display: block !important;
@@ -237,9 +188,9 @@ div[data-baseweb="popover"] div[role="option"] {
     min-height: 60px !important;
 }
 
-/* ================= REMOVE TOP SPACE ================= */
+/* ================= REMOVE TOP PADDING ================= */
 .block-container {
-    padding-top: 0 !important;
+    padding-top: 1rem;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -272,76 +223,8 @@ USERS = {
     "doktervalerie": "123456"
 }
 
-# ================= CSS LOGIN =================
-st.markdown("""
-<style>
-
-/* RESET */
-html, body, [data-testid="stAppViewContainer"] {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* 🔥 HILANGKAN SCROLL */
-}
-
-/* HAPUS PADDING STREAMLIT */
-[data-testid="block-container"] {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* WRAPPER CENTER */
-.login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100dvh; /* 🔥 lebih akurat dari 100vh */
-}
-
-/* CARD */
-.login-card {
-    width: 100%;
-    max-width: 420px;
-    background: white;
-    padding: 30px;
-    border-radius: 24px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-}
-
-/* INPUT */
-input {
-    border-radius: 10px !important;
-}
-
-/* BUTTON */
-.stButton > button {
-    width: 100%;
-    height: 48px;
-    border-radius: 12px;
-    background-color: #5cc8a1;
-    color: white !important;
-}
-
-/* TEXT */
-body, p, label, h1, h2, h3 {
-    color: black !important;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# ================= LOGIN PAGE =================
 if not st.session_state.logged_in:
-
-    # Wrapper mulai
-    st.markdown('<div class="login-wrapper">', unsafe_allow_html=True)
-    st.markdown('<div class="login-card">', unsafe_allow_html=True)
-
-    # Judul (pakai HTML biar tidak geser layout)
-    st.markdown(
-        "<h2 style='text-align:center;'>Login Sistem Skrining Kejang Anak</h2>",
-        unsafe_allow_html=True
-    )
+    st.title("Login Sistem Skrining Kejang Anak")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -354,10 +237,6 @@ if not st.session_state.logged_in:
             st.rerun()
         else:
             st.error("Username atau password salah")
-
-    # Wrapper tutup
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
     st.stop()
 
