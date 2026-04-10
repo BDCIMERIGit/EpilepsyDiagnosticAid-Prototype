@@ -15,9 +15,11 @@ bg_img = get_base64_image("background.png")
 st.markdown(f"""
 <style>
 .stApp {{
-    background-image: url("data:image/png;base64,{bg_img}");
-    background-size: contain;
-    background-position: top center;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        url("data:image/png;base64,{bg_img}");
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }}
