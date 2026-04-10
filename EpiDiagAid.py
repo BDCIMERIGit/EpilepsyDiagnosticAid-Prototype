@@ -39,13 +39,13 @@ section.main > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transform: translateY(-15%);
     min-height: 100vh;
 }
 
 /* BALIKIN WIDTH NORMAL */
 .block-container {
     max-width: 35% !important;
+    transform: translateY(-15%);
     padding-top: 0rem;
 }
 
