@@ -34,17 +34,17 @@ st.markdown(f"""
 st.markdown("""
 <style>
 
-/* ================= CENTER LOGIN PAGE ================= */
+/* CENTER VERTIKAL TANPA NGECILIN LAYOUT */
 section.main > div {
-    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    min-height: 100vh;
 }
 
-/* Batasi lebar form login */
-div.block-container {
-    max-width: 420px;
+/* BALIKIN WIDTH NORMAL */
+.block-container {
+    max-width: 100% !important;
     padding-top: 0rem;
 }
 
