@@ -39,6 +39,7 @@ section.main > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transform: translateY(-5%);
     min-height: 100vh;
 }
 
