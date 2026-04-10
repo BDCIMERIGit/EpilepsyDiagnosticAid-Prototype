@@ -17,12 +17,12 @@ bg_img = get_base64_image("background.png")
 st.markdown("""
 <style>
 /* ================= BACKGROUND ================= */
-.stApp {
+.stApp {{
     background-image: url("data:image/png;base64,{bg_img}");
     background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
-}
+}}
 
 /* ================= MAIN CARD ================= */
 .main > div {
