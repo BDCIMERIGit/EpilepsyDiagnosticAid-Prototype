@@ -48,11 +48,6 @@ section[data-testid="stAppViewContainer"]::before {{
     z-index: 1;
 }}
 
-/* ================= BACKGROUND (ASLI - TIDAK DIHAPUS) ================= */
-.stApp {{
-    background: #ffffff;
-}}
-
 /* ================= MAIN CARD ================= */
 .main > div {{
     background: white;
