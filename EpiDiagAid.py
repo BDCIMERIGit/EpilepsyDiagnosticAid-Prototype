@@ -48,14 +48,43 @@ html, body, [data-testid="stAppViewContainer"] {
 }
 
 /* ================= MAIN CARD ================= */
+/* HAPUS BACKGROUND PUTIH GLOBAL */
 .main > div {
-    background: white;
-    border-radius: 24px;
-    padding: 30px;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* FIX FULL SCREEN TANPA SCROLL */
+html, body, [data-testid="stAppViewContainer"] {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* HAPUS PADDING STREAMLIT */
+[data-testid="block-container"] {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* WRAPPER CENTER */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100%;
+}
+
+/* CARD LOGIN SAJA */
+.login-card {
     width: 100%;
     max-width: 420px;
-    margin: auto;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
 }
 
 /* ================= FORCE TEXT HITAM ================= */
