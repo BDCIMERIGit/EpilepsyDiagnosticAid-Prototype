@@ -51,7 +51,7 @@ section[data-testid="stAppViewContainer"]::before {{
 /* ================= BACKGROUND (ASLI - TIDAK DIHAPUS) ================= */
 .stApp {{
     background: #ffffff;
-}
+}}
 
 /* ================= MAIN CARD ================= */
 .main > div {{
