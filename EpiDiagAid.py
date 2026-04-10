@@ -2,6 +2,15 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
+# Load Image Background
+import base64
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+bg_img = get_base64_image("background.png")
+
 # =====================================================
 # Styling UI + BACKGROUND IMAGE
 # =====================================================
@@ -9,8 +18,8 @@ st.markdown("""
 <style>
 /* ================= BACKGROUND ================= */
 .stApp {
-    background-image: url("background.png");
-    background-size: 100% auto;   /* INI KUNCI */
+    background-image: url("data:image/png;base64,{bg_img}");
+    background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
 }
