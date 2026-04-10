@@ -5,8 +5,11 @@ from datetime import datetime
 # Load Image Background
 import base64
 
+BASE_DIR = os.path.dirname(__file__)
+image_path = os.path.join(BASE_DIR, "background.png")
+
 def get_base64_image(image_path):
-    with open(image_path, "rb") as f:
+    with open(image_path) as f:
         return base64.b64encode(f.read()).decode()
 
 bg_img = get_base64_image("background.png")
