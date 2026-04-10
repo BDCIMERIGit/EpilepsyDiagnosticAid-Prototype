@@ -1,77 +1,70 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-import base64
-
-# =====================================================
-# LOAD BACKGROUND IMAGE
-# =====================================================
-
-background-image: url("background.png");
 
 # =====================================================
 # Styling UI + BACKGROUND IMAGE
 # =====================================================
-st.markdown(f"""
+st.markdown("""
 <style>
 
-/* ================= BACKGROUND FIX (DITAMBAHKAN) ================= */
-html, body {{
+/* ================= BACKGROUND FIX (UPDATED - TANPA BASE64) ================= */
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}}
+}
 
-section[data-testid="stAppViewContainer"] {{
-    background-image: url("data:image/png;base64,{bg_img}");
+section[data-testid="stAppViewContainer"] {
+    background-image: url("background.png");
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: top center;
     min-height: 100vh;
-}}
+}
 
 /* overlay biar readable */
-section[data-testid="stAppViewContainer"]::before {{
+section[data-testid="stAppViewContainer"]::before {
     content: "";
     position: fixed;
     inset: 0;
     background: rgba(255,255,255,0.6);
     z-index: 0;
-}}
+}
 
 /* pastikan konten di atas */
-.block-container {{
+.block-container {
     position: relative;
     z-index: 1;
-}}
+}
 
 /* ================= MAIN CARD ================= */
-.main > div {{
+.main > div {
     background: white;
     border-radius: 24px;
     padding: 25px;
     max-width: 420px;
     margin: auto;
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-}}
+}
 
 /* ================= FORCE TEXT HITAM ================= */
-body, p, span, div, label, h1, h2, h3, h4 {{
+body, p, span, div, label, h1, h2, h3, h4 {
     color: #000000 !important;
-}}
+}
 
 /* ================= BUTTON ================= */
-.stButton > button {{
+.stButton > button {
     width: 100%;
     border-radius: 12px;
     height: 48px;
     font-size: 16px;
     background-color: #5cc8a1;
     color: white !important;
-}}
+}
 
 /* ================= DOWNLOAD BUTTON ================= */
-div.stDownloadButton > button {{
+div.stDownloadButton > button {
     width: 100%;
     border-radius: 12px;
     height: 48px;
@@ -79,136 +72,121 @@ div.stDownloadButton > button {{
     background-color: #5cc8a1 !important;
     color: white !important;
     font-weight: 600;
-}}
+}
 
-div.stDownloadButton > button:hover {{
+div.stDownloadButton > button:hover {
     background-color: #4db892 !important;
-}}
+}
 
 /* ================= RADIO ================= */
-.stRadio {{
+.stRadio {
     border: 1px solid #cfcfcf;
     border-radius: 12px;
     padding: 10px 12px;
     margin-bottom: 12px;
     background-color: #f9f9f9;
-}}
+}
 
 /* ================= MULTISELECT BOX ================= */
-div[data-baseweb="select"] > div {{
+div[data-baseweb="select"] > div {
     background-color: #e5e5e5 !important;
     border: 1px solid #b0b0b0 !important;
     border-radius: 12px !important;
-}}
+}
 
 /* teks dalam multiselect */
-div[data-baseweb="select"] span {{
+div[data-baseweb="select"] span {
     color: #000000 !important;
-}}
+}
 
 /* ================= POPUP PANEL ================= */
-div[data-baseweb="popover"] > div {{
+div[data-baseweb="popover"] > div {
     background-color: #e5e5e5 !important;
     border-radius: 12px !important;
     border: 1px solid #b0b0b0 !important;
-}}
+}
 
 /* list container */
-div[data-baseweb="popover"] ul {{
+div[data-baseweb="popover"] ul {
     background-color: #e5e5e5 !important;
-}}
+}
 
 /* ================= ITEM DEFAULT ================= */
 div[data-baseweb="popover"] li,
-div[data-baseweb="popover"] div[role="option"] {{
+div[data-baseweb="popover"] div[role="option"] {
     background-color: #e5e5e5 !important;
     color: #000000 !important;
-}}
+}
 
 /* ================= HOVER (ABU MUDA) ================= */
 div[data-baseweb="popover"] li:hover,
 div[data-baseweb="popover"] div[role="option"]:hover,
 div[data-baseweb="popover"] li[data-highlighted="true"],
-div[data-baseweb="popover"] div[role="option"][aria-selected="false"] {{
+div[data-baseweb="popover"] div[role="option"][aria-selected="false"] {
     background-color: #f2f2f2 !important;
     color: #000000 !important;
-}}
+}
 
 /* ================= ITEM TERPILIH ================= */
 div[data-baseweb="popover"] li[aria-selected="true"],
-div[data-baseweb="popover"] div[role="option"][aria-selected="true"] {{
+div[data-baseweb="popover"] div[role="option"][aria-selected="true"] {
     background-color: #d0d0d0 !important;
     color: #000000 !important;
-}}
+}
 
 /* ================= TAG TERPILIH ================= */
-div[data-baseweb="tag"] {{
+div[data-baseweb="tag"] {
     background-color: #cfcfcf !important;
     color: #000000 !important;
-}}
+}
 
 /* ================= SCROLLBAR ================= */
-div[data-baseweb="popover"]::-webkit-scrollbar-thumb {{
+div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     background-color: #bbbbbb !important;
-}}
+}
 
 /* ================= ALERT SUCCESS ================= */
-.stAlertSuccess {{
+.stAlertSuccess {
     background-color: #d4edda !important;
     border: 1px solid #a3cfbb !important;
     color: #000000 !important;
     border-radius: 12px;
-}}
+}
 
 /* ================= HASIL DIAGNOSIS ================= */
-.hasil-diagnosis {{
+.hasil-diagnosis {
     background-color: #d4edda;
     border: 1px solid #a3cfbb;
     border-radius: 12px;
     padding: 16px;
     color: #000000;
     font-size: 14px;
-}}
+}
 
-.hasil-diagnosis pre {{
+.hasil-diagnosis pre {
     background: transparent !important;
     color: #000000 !important;
     white-space: pre-wrap;
     margin: 0;
     font-family: monospace;
-}}
+}
 
-/* semua opsi bisa multiline & tinggi otomatis */
+/* multiline option */
 div[data-baseweb="popover"] div[role="option"],
-div[data-baseweb="popover"] li {{
+div[data-baseweb="popover"] li {
     white-space: normal !important;
     line-height: 1.4 !important;
     min-height: 60px !important;
     align-items: flex-start !important;
-}}
-
-/* === PAKSA TEKS OPTION MULTISELECT JADI MULTI LINE === */
-div[data-baseweb="popover"] div[role="option"] span {{
-    white-space: normal !important;
-    display: block !important;
-    line-height: 1.4 !important;
-}}
-
-div[data-baseweb="popover"] div[role="option"] {{
-    align-items: flex-start !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    min-height: 60px !important;
-}}
+}
 
 /* ================= REMOVE TOP PADDING ================= */
-.block-container {{
+.block-container {
     padding-top: 1rem;
-}}
+}
 
 </style>
 """, unsafe_allow_html=True)
-
 # =====================================================
 # CONFIG
 # =====================================================
