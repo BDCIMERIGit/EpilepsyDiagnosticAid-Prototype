@@ -19,9 +19,10 @@ st.markdown(f"""
         linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
         url("data:image/png;base64,{bg_img}");
     background-size: contain;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: #0e1117;
 }}
 </style>
 """, unsafe_allow_html=True)
