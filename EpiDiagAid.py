@@ -6,6 +6,10 @@ from datetime import datetime
 import base64
 import os
 
+def get_base64_image(image_path):
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode("utf-8")
+
 bg_img = get_base64_image("background.png")
 
 # =====================================================
