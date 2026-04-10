@@ -15,7 +15,7 @@ bg_img = get_base64_image("background.png")
 # =====================================================
 # Styling UI + BACKGROUND IMAGE
 # =====================================================
-st.markdown("""
+st.markdown(f"""
 <style>
 /* ================= BACKGROUND ================= */
 .stApp {{
