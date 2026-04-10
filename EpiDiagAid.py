@@ -3,52 +3,13 @@ import pandas as pd
 from datetime import datetime
 
 # =====================================================
-# LOAD IMAGE
-# =====================================================
-import base64
-
-def get_base64(file):
-    with open(file, "rb") as f:
-        return base64.b64encode(f.read()).decode()
-
-bg_img = get_base64("background.png")
-
-
-# =====================================================
 # Styling UI + BACKGROUND IMAGE
 # =====================================================
 st.markdown("""
 <style>
-
-/* ================= BACKGROUND FIX (UPDATED - TANPA BASE64) ================= */
-[data-testid="stAppViewContainer"] {
-    background: none;
-}
-
-[data-testid="stHeader"] {
-    background: rgba(0,0,0,0);
-}
-
-/* BACKGROUND VIA IMG FIX */
-.bg-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/png;base64,{bg_img}");
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    z-index: -1;
-}
-
-/* overlay */
-.bg-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,0.5);
-    z-index: -1;
+/* ================= BACKGROUND ================= */
+.stApp {
+    background: #ffffff;
 }
 
 /* ================= MAIN CARD ================= */
@@ -184,7 +145,7 @@ div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     font-family: monospace;
 }
 
-/* multiline option */
+/* semua opsi bisa multiline & tinggi otomatis */
 div[data-baseweb="popover"] div[role="option"],
 div[data-baseweb="popover"] li {
     white-space: normal !important;
@@ -193,17 +154,27 @@ div[data-baseweb="popover"] li {
     align-items: flex-start !important;
 }
 
+/* === PAKSA TEKS OPTION MULTISELECT JADI MULTI LINE === */
+div[data-baseweb="popover"] div[role="option"] span {
+    white-space: normal !important;
+    display: block !important;
+    line-height: 1.4 !important;
+}
+
+div[data-baseweb="popover"] div[role="option"] {
+    align-items: flex-start !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    min-height: 60px !important;
+}
+
 /* ================= REMOVE TOP PADDING ================= */
 .block-container {
     padding-top: 1rem;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
-# inject div background
-st.markdown('<div class="bg-image"></div>', unsafe_allow_html=True)
-st.markdown('<div class="bg-overlay"></div>', unsafe_allow_html=True)
 # =====================================================
 # CONFIG
 # =====================================================
