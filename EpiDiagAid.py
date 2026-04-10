@@ -44,7 +44,7 @@ section.main > div {
 
 /* BALIKIN WIDTH NORMAL */
 .block-container {
-    max-width: 37% !important;
+    max-width: 39% !important;
     transform: translateY(+30%);
     padding-top: 0rem;
 }
