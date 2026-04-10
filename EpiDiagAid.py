@@ -250,7 +250,7 @@ USERS = {
 }
 
 if not st.session_state.logged_in:
-    st.title("Login Sistem Skrining Kejang Anak")
+    st.title("Sistem Skrining Kejang Anak")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
