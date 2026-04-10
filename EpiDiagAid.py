@@ -6,14 +6,17 @@ from datetime import datetime
 import base64
 import os
 
+def get_base64_image(image_path):
+    with open(image_path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
 BASE_DIR = os.path.dirname(__file__)
 image_path = os.path.join(BASE_DIR, "background.png")
 
-def get_base64_image(image_path):
-    with open(image_path) as f:
-        return base64.b64encode(f.read()).decode()
+st.write("PATH:", image_path)
+st.write("EXISTS:", os.path.exists(image_path))
 
-bg_img = get_base64_image("background.png")
+bg_img = get_base64_image(image_path)
 
 # =====================================================
 # Styling UI + BACKGROUND IMAGE
