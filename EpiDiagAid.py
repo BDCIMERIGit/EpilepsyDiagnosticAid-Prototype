@@ -9,33 +9,34 @@ st.markdown("""
 <style>
 
 /* ================= BACKGROUND FIX (UPDATED - TANPA BASE64) ================= */
-html, body {
+[data-testid="stAppViewContainer"] {
+    background: none;
+}
+
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);
+}
+
+/* BACKGROUND VIA IMG FIX */
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-section[data-testid="stAppViewContainer"] {
     background-image: url("background.png");
-    background-size: 100% auto;
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: top center;
-    min-height: 100vh;
+    background-repeat: no-repeat;
+    z-index: -1;
 }
 
-/* overlay biar readable */
-section[data-testid="stAppViewContainer"]::before {
-    content: "";
+/* overlay */
+.bg-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(255,255,255,0.6);
-    z-index: 0;
-}
-
-/* pastikan konten di atas */
-.block-container {
-    position: relative;
-    z-index: 1;
+    background: rgba(255,255,255,0.5);
+    z-index: -1;
 }
 
 /* ================= MAIN CARD ================= */
@@ -187,6 +188,10 @@ div[data-baseweb="popover"] li {
 
 </style>
 """, unsafe_allow_html=True)
+
+# inject div background
+st.markdown('<div class="bg-image"></div>', unsafe_allow_html=True)
+st.markdown('<div class="bg-overlay"></div>', unsafe_allow_html=True)
 # =====================================================
 # CONFIG
 # =====================================================
