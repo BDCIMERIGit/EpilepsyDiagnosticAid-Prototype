@@ -2,7 +2,9 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
+# ==============================================
 # Load Image Background
+# ==============================================
 import base64
 import os
 
@@ -23,6 +25,29 @@ st.markdown(f"""
     background-repeat: no-repeat;
     background-color: #0e1117;
 }}
+</style>
+""", unsafe_allow_html=True)
+
+# =====================================================
+# Center Login Page
+# =====================================================
+st.markdown("""
+<style>
+
+/* ================= CENTER LOGIN PAGE ================= */
+section.main > div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Batasi lebar form login */
+div.block-container {
+    max-width: 420px;
+    padding-top: 0rem;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
