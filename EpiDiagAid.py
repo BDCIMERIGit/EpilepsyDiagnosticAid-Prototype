@@ -3,6 +3,18 @@ import pandas as pd
 from datetime import datetime
 
 # =====================================================
+# LOAD IMAGE
+# =====================================================
+import base64
+
+def get_base64(file):
+    with open(file, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+bg_img = get_base64("background.png")
+
+
+# =====================================================
 # Styling UI + BACKGROUND IMAGE
 # =====================================================
 st.markdown("""
@@ -24,7 +36,7 @@ st.markdown("""
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("background.png");
+    background-image: url("data:image/png;base64,{bg_img}");
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
