@@ -9,7 +9,10 @@ st.markdown("""
 <style>
 /* ================= BACKGROUND ================= */
 .stApp {
-    background: #ffffff;
+    background-image: url("background.png");
+    background-size: 100% auto;   /* INI KUNCI */
+    background-position: top center;
+    background-repeat: no-repeat;
 }
 
 /* ================= MAIN CARD ================= */
