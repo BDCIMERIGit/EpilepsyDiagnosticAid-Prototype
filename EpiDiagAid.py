@@ -18,17 +18,44 @@ bg_img = get_base64("background.png")
 st.markdown(f"""
 <style>
 
-/* ================= BACKGROUND IMAGE ================= */
-.stApp {{
+/* ================= BACKGROUND FIX (DITAMBAHKAN) ================= */
+html, body {{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}}
+
+section[data-testid="stAppViewContainer"] {{
     background-image: url("data:image/png;base64,{bg_img}");
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: top center;
+    min-height: 100vh;
 }}
+
+/* overlay biar readable */
+section[data-testid="stAppViewContainer"]::before {{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.6);
+    z-index: 0;
+}}
+
+/* pastikan konten di atas */
+.block-container {{
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= BACKGROUND (ASLI - TIDAK DIHAPUS) ================= */
+.stApp {{
+    background: #ffffff;
+}
 
 /* ================= MAIN CARD ================= */
 .main > div {{
-    background: rgba(255,255,255,0.9);
+    background: white;
     border-radius: 24px;
     padding: 25px;
     max-width: 420px;
@@ -82,6 +109,7 @@ div[data-baseweb="select"] > div {{
     border-radius: 12px !important;
 }}
 
+/* teks dalam multiselect */
 div[data-baseweb="select"] span {{
     color: #000000 !important;
 }}
@@ -93,33 +121,46 @@ div[data-baseweb="popover"] > div {{
     border: 1px solid #b0b0b0 !important;
 }}
 
+/* list container */
 div[data-baseweb="popover"] ul {{
     background-color: #e5e5e5 !important;
 }}
 
+/* ================= ITEM DEFAULT ================= */
 div[data-baseweb="popover"] li,
 div[data-baseweb="popover"] div[role="option"] {{
     background-color: #e5e5e5 !important;
     color: #000000 !important;
 }}
 
+/* ================= HOVER (ABU MUDA) ================= */
 div[data-baseweb="popover"] li:hover,
-div[data-baseweb="popover"] div[role="option"]:hover {{
+div[data-baseweb="popover"] div[role="option"]:hover,
+div[data-baseweb="popover"] li[data-highlighted="true"],
+div[data-baseweb="popover"] div[role="option"][aria-selected="false"] {{
     background-color: #f2f2f2 !important;
+    color: #000000 !important;
 }}
 
+/* ================= ITEM TERPILIH ================= */
 div[data-baseweb="popover"] li[aria-selected="true"],
 div[data-baseweb="popover"] div[role="option"][aria-selected="true"] {{
     background-color: #d0d0d0 !important;
+    color: #000000 !important;
 }}
 
-/* ================= TAG ================= */
+/* ================= TAG TERPILIH ================= */
 div[data-baseweb="tag"] {{
     background-color: #cfcfcf !important;
     color: #000000 !important;
 }}
 
-/* ================= ALERT ================= */
+/* ================= SCROLLBAR ================= */
+div[data-baseweb="popover"]::-webkit-scrollbar-thumb {{
+    background-color: #bbbbbb !important;
+}}
+
+/* ================= ALERT SUCCESS ================= */
 .stAlertSuccess {{
     background-color: #d4edda !important;
     border: 1px solid #a3cfbb !important;
@@ -127,7 +168,7 @@ div[data-baseweb="tag"] {{
     border-radius: 12px;
 }}
 
-/* ================= HASIL ================= */
+/* ================= HASIL DIAGNOSIS ================= */
 .hasil-diagnosis {{
     background-color: #d4edda;
     border: 1px solid #a3cfbb;
@@ -143,6 +184,29 @@ div[data-baseweb="tag"] {{
     white-space: pre-wrap;
     margin: 0;
     font-family: monospace;
+}}
+
+/* semua opsi bisa multiline & tinggi otomatis */
+div[data-baseweb="popover"] div[role="option"],
+div[data-baseweb="popover"] li {{
+    white-space: normal !important;
+    line-height: 1.4 !important;
+    min-height: 60px !important;
+    align-items: flex-start !important;
+}}
+
+/* === PAKSA TEKS OPTION MULTISELECT JADI MULTI LINE === */
+div[data-baseweb="popover"] div[role="option"] span {{
+    white-space: normal !important;
+    display: block !important;
+    line-height: 1.4 !important;
+}}
+
+div[data-baseweb="popover"] div[role="option"] {{
+    align-items: flex-start !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    min-height: 60px !important;
 }}
 
 /* ================= REMOVE TOP PADDING ================= */
