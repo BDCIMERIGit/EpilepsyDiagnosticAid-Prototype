@@ -19,7 +19,7 @@ st.markdown(f"""
         linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
         url("data:image/png;base64,{bg_img}");
     background-size: cover;
-    background-position: top center;
+    background-position: bottom center;
     background-repeat: no-repeat;
     background-color: #0e1117;
 }}
