@@ -32,11 +32,25 @@ st.markdown(f"""
 st.markdown("""
 <style>
 
+/* ================= FULL HEIGHT ================= */
+html, body, [data-testid="stAppViewContainer"] {
+    height: 100%;
+}
+
+/* ================= CENTER LOGIN ================= */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 /* ================= MAIN CARD ================= */
 .main > div {
     background: white;
     border-radius: 24px;
-    padding: 25px;
+    padding: 30px;
+    width: 100%;
     max-width: 420px;
     margin: auto;
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
@@ -45,6 +59,11 @@ st.markdown("""
 /* ================= FORCE TEXT HITAM ================= */
 body, p, span, div, label, h1, h2, h3, h4 {
     color: #000000 !important;
+}
+
+/* ================= INPUT FIELD ================= */
+input {
+    border-radius: 10px !important;
 }
 
 /* ================= BUTTON ================= */
@@ -112,7 +131,7 @@ div[data-baseweb="popover"] div[role="option"] {
     color: #000000 !important;
 }
 
-/* ================= HOVER (ABU MUDA) ================= */
+/* ================= HOVER ================= */
 div[data-baseweb="popover"] li:hover,
 div[data-baseweb="popover"] div[role="option"]:hover,
 div[data-baseweb="popover"] li[data-highlighted="true"],
@@ -165,7 +184,7 @@ div[data-baseweb="popover"]::-webkit-scrollbar-thumb {
     font-family: monospace;
 }
 
-/* semua opsi bisa multiline & tinggi otomatis */
+/* ================= MULTILINE OPTION ================= */
 div[data-baseweb="popover"] div[role="option"],
 div[data-baseweb="popover"] li {
     white-space: normal !important;
@@ -174,7 +193,6 @@ div[data-baseweb="popover"] li {
     align-items: flex-start !important;
 }
 
-/* === PAKSA TEKS OPTION MULTISELECT JADI MULTI LINE === */
 div[data-baseweb="popover"] div[role="option"] span {
     white-space: normal !important;
     display: block !important;
@@ -188,9 +206,9 @@ div[data-baseweb="popover"] div[role="option"] {
     min-height: 60px !important;
 }
 
-/* ================= REMOVE TOP PADDING ================= */
+/* ================= REMOVE TOP SPACE ================= */
 .block-container {
-    padding-top: 1rem;
+    padding-top: 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
