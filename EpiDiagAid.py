@@ -21,7 +21,6 @@ st.markdown(f"""
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-color: #0e1117;
 }}
 </style>
