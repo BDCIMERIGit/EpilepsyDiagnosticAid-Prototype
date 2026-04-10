@@ -46,6 +46,7 @@ section.main > div {
 .block-container {
     max-width: 35% !important;
     transform: translateY(+25%);
+    text-align: center;
     padding-top: 0rem;
 }
 
