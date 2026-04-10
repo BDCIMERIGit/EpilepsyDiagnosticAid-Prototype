@@ -23,6 +23,7 @@ st.markdown("""
     background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }}
 
 /* ================= MAIN CARD ================= */
