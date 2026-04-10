@@ -44,7 +44,7 @@ section.main > div {
 
 /* BALIKIN WIDTH NORMAL */
 .block-container {
-    max-width: 40% !important;
+    max-width: 35% !important;
     transform: translateY(+30%);
     padding-top: 0rem;
 }
@@ -250,7 +250,7 @@ USERS = {
 }
 
 if not st.session_state.logged_in:
-    st.title("Sistem Skrining Kejang Anak")
+    st.title("Skrining Kejang Anak")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
