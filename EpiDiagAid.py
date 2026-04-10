@@ -46,7 +46,7 @@ section[data-testid="stAppViewContainer"]::before {{
 .block-container {{
     position: relative;
     z-index: 1;
-}
+}}
 
 /* ================= BACKGROUND (ASLI - TIDAK DIHAPUS) ================= */
 .stApp {{
