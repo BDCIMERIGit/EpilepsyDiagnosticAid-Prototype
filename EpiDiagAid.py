@@ -12,12 +12,8 @@ def get_base64_image(image_path):
 
 bg_img = get_base64_image("background.png")
 
-# =====================================================
-# Styling UI + BACKGROUND IMAGE
-# =====================================================
 st.markdown(f"""
 <style>
-/* ================= BACKGROUND ================= */
 .stApp {{
     background-image: url("data:image/png;base64,{bg_img}");
     background-size: 100% auto;
@@ -25,6 +21,14 @@ st.markdown(f"""
     background-repeat: no-repeat;
     background-attachment: fixed;
 }}
+</style>
+""", unsafe_allow_html=True)
+
+# =====================================================
+# Styling UI + BACKGROUND IMAGE
+# =====================================================
+st.markdown("""
+<style>
 
 /* ================= MAIN CARD ================= */
 .main > div {
