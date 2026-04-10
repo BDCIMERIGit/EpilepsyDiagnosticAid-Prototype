@@ -19,12 +19,12 @@ st.markdown(f"""
 <style>
 
 /* ================= BACKGROUND IMAGE ================= */
-.stApp [{
+.stApp {{
     background-image: url("data:image/png;base64,{bg_img}");
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-position: top center;
-}]
+}}
 
 /* ================= MAIN CARD ================= */
 .main > div {{
