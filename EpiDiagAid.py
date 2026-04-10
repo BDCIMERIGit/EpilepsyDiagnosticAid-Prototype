@@ -44,7 +44,7 @@ section.main > div {
 
 /* BALIKIN WIDTH NORMAL */
 .block-container {
-    max-width: 100% !important;
+    max-width: 60% !important;
     padding-top: 0rem;
 }
 
