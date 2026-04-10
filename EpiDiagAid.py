@@ -4,13 +4,10 @@ from datetime import datetime
 import base64
 
 # =====================================================
-# LOAD BACKGROUND IMAGE (BASE64)
+# LOAD BACKGROUND IMAGE
 # =====================================================
-def get_base64(file):
-    with open(file, "rb") as f:
-        return base64.b64encode(f.read()).decode()
 
-bg_img = get_base64("background.png")
+background-image: url("background.png");
 
 # =====================================================
 # Styling UI + BACKGROUND IMAGE
