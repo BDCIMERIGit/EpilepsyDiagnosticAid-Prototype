@@ -37,12 +37,14 @@ html, body, [data-testid="stAppViewContainer"] {
     height: 100%;
 }
 
-/* ================= CENTER LOGIN ================= */
-.main {
+/* ================= CENTER SEMUA KONTEN ================= */
+[data-testid="block-container"] {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    justify-content: center;   /* vertikal */
+    align-items: center;       /* horizontal */
+    min-height: 100vh;
+    padding-top: 0 !important;
 }
 
 /* ================= MAIN CARD ================= */
