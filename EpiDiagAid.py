@@ -247,9 +247,18 @@ USERS = {
 st.markdown("""
 <style>
 
-/* FULL SCREEN */
+/* RESET */
 html, body, [data-testid="stAppViewContainer"] {
     height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 🔥 HILANGKAN SCROLL */
+}
+
+/* HAPUS PADDING STREAMLIT */
+[data-testid="block-container"] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* WRAPPER CENTER */
@@ -257,7 +266,7 @@ html, body, [data-testid="stAppViewContainer"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100dvh; /* 🔥 lebih akurat dari 100vh */
 }
 
 /* CARD */
@@ -282,7 +291,6 @@ input {
     border-radius: 12px;
     background-color: #5cc8a1;
     color: white !important;
-    font-size: 16px;
 }
 
 /* TEXT */
