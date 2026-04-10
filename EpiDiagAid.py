@@ -243,8 +243,68 @@ USERS = {
     "doktervalerie": "123456"
 }
 
+# ================= CSS LOGIN =================
+st.markdown("""
+<style>
+
+/* FULL SCREEN */
+html, body, [data-testid="stAppViewContainer"] {
+    height: 100%;
+}
+
+/* WRAPPER CENTER */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* CARD */
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+}
+
+/* INPUT */
+input {
+    border-radius: 10px !important;
+}
+
+/* BUTTON */
+.stButton > button {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #5cc8a1;
+    color: white !important;
+    font-size: 16px;
+}
+
+/* TEXT */
+body, p, label, h1, h2, h3 {
+    color: black !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ================= LOGIN PAGE =================
 if not st.session_state.logged_in:
-    st.title("Login Sistem Skrining Kejang Anak")
+
+    # Wrapper mulai
+    st.markdown('<div class="login-wrapper">', unsafe_allow_html=True)
+    st.markdown('<div class="login-card">', unsafe_allow_html=True)
+
+    # Judul (pakai HTML biar tidak geser layout)
+    st.markdown(
+        "<h2 style='text-align:center;'>Login Sistem Skrining Kejang Anak</h2>",
+        unsafe_allow_html=True
+    )
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -257,6 +317,10 @@ if not st.session_state.logged_in:
             st.rerun()
         else:
             st.error("Username atau password salah")
+
+    # Wrapper tutup
+    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
     st.stop()
 
