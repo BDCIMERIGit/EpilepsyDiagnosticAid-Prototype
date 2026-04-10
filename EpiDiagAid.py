@@ -4,6 +4,7 @@ from datetime import datetime
 
 # Load Image Background
 import base64
+import os
 
 BASE_DIR = os.path.dirname(__file__)
 image_path = os.path.join(BASE_DIR, "background.png")
