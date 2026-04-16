@@ -345,7 +345,7 @@ if st.session_state.show_welcome:
                     Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
                     Aplikasi ini akan membantu para dokter dalam membuat diagnosis
                     dan memberikan tatalaksana awal.
-                </div>
+    
             </div>
         </div>
     </div>
