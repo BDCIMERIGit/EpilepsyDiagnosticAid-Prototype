@@ -311,10 +311,26 @@ if st.session_state.show_welcome:
         border: 2px solid #888;
     }
 
+    /* ================= GLASS BOX ================= */
+    .welcome-box {
+        background: rgba(255, 255, 255, 0.15); /* transparan */
+        backdrop-filter: blur(12px); /* efek blur kaca */
+        -webkit-backdrop-filter: blur(12px);
+
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 500px;
+
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
     </style>
     """, unsafe_allow_html=True)
 
     st.markdown('<div class="welcome-container">', unsafe_allow_html=True)
+
+    st.markdown('<div class="welcome-box">', unsafe_allow_html=True)
 
     st.markdown('<div class="welcome-title">Epilepsy Diagnostic Aid</div>', unsafe_allow_html=True)
 
@@ -332,8 +348,9 @@ if st.session_state.show_welcome:
         st.session_state.show_welcome = False
         st.rerun()
 
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)  # tombol
+    st.markdown('</div>', unsafe_allow_html=True)  # welcome-box
+    st.markdown('</div>', unsafe_allow_html=True)  # container
 
     st.stop()
 # =====================================================
