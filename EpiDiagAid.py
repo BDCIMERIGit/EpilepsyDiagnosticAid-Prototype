@@ -337,7 +337,7 @@ if st.session_state.show_welcome:
     /* ================= FIX BUTTON POSITION ================= */
     div.stButton {
         position: fixed;
-        top: 98%;
+        top: 138%;
         left: 77%;
         transform: translateX(-50%);
         width: 500px;
