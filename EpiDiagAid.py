@@ -314,7 +314,7 @@ if st.session_state.show_welcome:
 
     .welcome-btn-wrapper {
         position: fixed;
-        top: 100%;
+        top: 70%;
         left: 50%;
         transform: translateX(-50%);
         width: 500px;
@@ -337,7 +337,7 @@ if st.session_state.show_welcome:
     /* ================= FIX BUTTON POSITION ================= */
     div.stButton {
         position: fixed;
-        top: 78%;
+        top: 98%;
         left: 77%;
         transform: translateX(-50%);
         width: 500px;
