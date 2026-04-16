@@ -256,40 +256,58 @@ if st.session_state.show_welcome:
     st.markdown("""
     <style>
 
-    /* FULL CENTER */
+    /* HILANGKAN SCROLL & PADDING DEFAULT STREAMLIT */
+    html, body, .stApp {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* HAPUS SPACE ATAS */
+    .block-container {
+        padding-top: 0rem !important;
+        margin-top: 0rem !important;
+    }
+
+    /* FULLSCREEN CENTER */
     .welcome-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
     }
 
-    /* BOX UTAMA (TRANSPARANSI & WARNA MENYESUAIKAN GAMBAR) */
+    /* BOX UTAMA */
     .welcome-box {
-        width: 500px;
-        background: rgba(255, 255, 255, 0.15);
+        width: 520px;
+        background: rgba(255, 255, 255, 0.18);
         border: 2px solid #3bbf8a;
-        border-radius: 8px;
-        backdrop-filter: blur(8px);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
         text-align: center;
-        padding: 20px;
+        padding: 30px 25px;
     }
 
-    /* HEADER */
+    /* TITLE */
     .welcome-title {
-        border: 2px solid #3bbf8a;
-        padding: 10px;
-        margin-bottom: 20px;
-        font-size: 22px;
+        font-size: 24px;
         font-weight: 500;
-        background: rgba(255,255,255,0.2);
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3bbf8a;
     }
 
     /* TEXT */
     .welcome-text {
         font-size: 16px;
-        line-height: 1.6;
-        margin-bottom: 25px;
+        line-height: 1.7;
+        margin-bottom: 30px;
         color: #000;
     }
 
@@ -297,9 +315,9 @@ if st.session_state.show_welcome:
     .welcome-btn button {
         width: 100%;
         border-radius: 30px;
-        height: 50px;
+        height: 52px;
         font-size: 18px;
-        background-color: rgba(255,255,255,0.6);
+        background-color: rgba(255,255,255,0.7);
         color: black;
         border: 2px solid #888;
     }
@@ -320,18 +338,17 @@ if st.session_state.show_welcome:
     </div>
     """, unsafe_allow_html=True)
 
-    # BUTTON
     st.markdown('<div class="welcome-btn">', unsafe_allow_html=True)
+
     if st.button("Aku paham, lanjut!"):
         st.session_state.show_welcome = False
         st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
 
+    st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
     st.stop()
-
 # =====================================================
 # LOGIN SYSTEM
 # =====================================================
