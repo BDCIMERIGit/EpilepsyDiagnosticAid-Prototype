@@ -314,7 +314,7 @@ if st.session_state.show_welcome:
 
     .welcome-btn-wrapper {
         position: fixed;
-        top: 60%;
+        top: 100%;
         left: 50%;
         transform: translateX(-50%);
         width: 500px;
