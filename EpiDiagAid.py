@@ -333,6 +333,26 @@ if st.session_state.show_welcome:
         border: 1px solid rgba(255,255,255,0.2);
     }
 
+    /* ================= FIX BUTTON POSITION ================= */
+    div.stButton {
+        position: fixed;
+        top: 62%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+    }
+
+    /* tombolnya */
+    div.stButton > button {
+        width: 100%;
+        border-radius: 30px;
+        height: 52px;
+        font-size: 18px;
+        background-color: #5cc8a1;
+        color: white;
+        border: none;
+    }
+
     </style>
     """, unsafe_allow_html=True)
 
@@ -341,17 +361,14 @@ if st.session_state.show_welcome:
         <div class="welcome-box">
             <div class="welcome-title">Epilepsy Diagnostic Aid</div>
 
-                <div class="welcome-text">
-                    Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
-                    Aplikasi ini akan membantu para dokter dalam membuat diagnosis
-                    dan memberikan tatalaksana awal.
-    
+            <div class="welcome-text">
+                Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
+                Aplikasi ini akan membantu para dokter dalam membuat diagnosis
+                dan memberikan tatalaksana awal.
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-    st.markdown('<div class="welcome-btn-wrapper">', unsafe_allow_html=True)
 
     if st.button("Aku paham, lanjut!"):
         st.session_state.show_welcome = False
