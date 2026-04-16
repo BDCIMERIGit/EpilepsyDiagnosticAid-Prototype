@@ -311,6 +311,14 @@ if st.session_state.show_welcome:
         border: 2px solid #888;
     }
 
+    .welcome-btn-wrapper {
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+    }
+
     /* ================= GLASS BOX ================= */
     .welcome-box {
         background: rgba(255, 255, 255, 0.15); /* transparan */
@@ -343,7 +351,7 @@ if st.session_state.show_welcome:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div class="welcome-btn">', unsafe_allow_html=True)
+    st.markdown('<div class="welcome-btn-wrapper">', unsafe_allow_html=True)
 
     if st.button("Aku paham, lanjut!"):
         st.session_state.show_welcome = False
