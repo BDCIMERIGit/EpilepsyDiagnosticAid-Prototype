@@ -250,6 +250,7 @@ if "show_welcome" not in st.session_state:
 # =====================================================
 # WELCOME PAGE UI
 # =====================================================
+
 if "show_welcome" not in st.session_state:
     st.session_state.show_welcome = True
 
@@ -258,9 +259,7 @@ if st.session_state.show_welcome:
     st.markdown("""
     <style>
 
-    /* =========================================
-       RESET STREAMLIT LAYOUT (FIX KOTAK KOSONG)
-    ========================================= */
+    /* RESET STREAMLIT CARD (HILANGKAN KOTAK PUTIH) */
     .main > div {
         background: transparent !important;
         box-shadow: none !important;
@@ -268,7 +267,7 @@ if st.session_state.show_welcome:
         max-width: 100% !important;
     }
 
-    /* HILANGKAN SCROLL */
+    /* FULLSCREEN TANPA SCROLL */
     html, body, .stApp {
         height: 100%;
         margin: 0;
@@ -276,15 +275,12 @@ if st.session_state.show_welcome:
         overflow: hidden;
     }
 
-    /* HAPUS SPACE ATAS */
     .block-container {
         padding-top: 0rem !important;
         margin-top: 0rem !important;
     }
 
-    /* =========================================
-       FULLSCREEN LAYOUT
-    ========================================= */
+    /* CONTAINER FULLSCREEN */
     .welcome-container {
         position: fixed;
         top: 0;
@@ -293,90 +289,94 @@ if st.session_state.show_welcome:
         bottom: 0;
 
         display: flex;
-        justify-content: center;
+        justify-content: flex-start; /* bisa diganti center kalau mau */
         align-items: center;
+
+        padding-left: 120px;
     }
 
-    /* =========================================
-       BOX UTAMA (GLASS EFFECT)
-    ========================================= */
+    /* BOX UTAMA */
     .welcome-box {
         width: 520px;
-        min-height: 300px; /* bikin tinggi memanjang */
-    
+        min-height: 320px;
+
         background: rgba(255, 255, 255, 0.18);
         border: 2px solid #3bbf8a;
         border-radius: 12px;
         backdrop-filter: blur(10px);
 
-        text-align: left; /* biar mirip desain */
         padding: 35px 30px;
 
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
     }
 
-    /* =========================================
-       TITLE
-    ========================================= */
+    /* TITLE */
     .welcome-title {
         font-size: 24px;
         font-weight: 500;
         margin-bottom: 20px;
         padding-bottom: 10px;
         border-bottom: 2px solid #3bbf8a;
+        color: black;
     }
 
-    /* =========================================
-       TEXT
-    ========================================= */
+    /* TEXT */
     .welcome-text {
         font-size: 16px;
-        line-height: 1.7;
-        margin-bottom: 30px;
-        color: #000;
+        line-height: 1.8;
+        margin-bottom: 40px;
+        color: black;
     }
 
-    /* =========================================
-       BUTTON
-    ========================================= */
+    /* BUTTON WRAPPER */
+    .welcome-btn {
+        margin-top: auto;
+    }
+
+    /* BUTTON STYLE */
     .welcome-btn button {
-        width: 100%;
-        border-radius: 30px;
-        height: 52px;
-        font-size: 18px;
-        background-color: rgba(255,255,255,0.7);
-        color: black;
-        border: 2px solid #888;
+        width: fit-content;
+        padding: 12px 24px;
+        border-radius: 14px;
+        font-size: 16px;
+        background-color: #5cc8a1;
+        color: white;
+        border: none;
     }
 
     </style>
     """, unsafe_allow_html=True)
 
     # ================= UI =================
-    st.markdown('<div class="welcome-container">', unsafe_allow_html=True)
-    st.markdown('<div class="welcome-box">', unsafe_allow_html=True)
-
-    st.markdown('<div class="welcome-title">Epilepsy Diagnostic Aid</div>', unsafe_allow_html=True)
-
     st.markdown("""
-    <div class="welcome-text">
-    Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
-    Aplikasi ini akan membantu para dokter dalam membuat diagnosis
-    dan memberikan tatalaksana awal.
-    </div>
+    <div class="welcome-container">
+        <div class="welcome-box">
+
+            <div class="welcome-title">
+                Epilepsy Diagnostic Aid
+            </div>
+
+            <div class="welcome-text">
+            Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
+            Aplikasi ini akan membantu para dokter dalam membuat diagnosis
+            dan memberikan tatalaksana awal.
+            </div>
+
+            <div class="welcome-btn">
     """, unsafe_allow_html=True)
 
-    st.markdown('<div class="welcome-btn">', unsafe_allow_html=True)
-
+    # BUTTON (WAJIB DI LUAR MARKDOWN, TAPI SUDAH TER-BUNGKUS)
     if st.button("Aku paham, lanjut!"):
         st.session_state.show_welcome = False
         st.rerun()
 
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown("""
+            </div>
+
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.stop()
 
