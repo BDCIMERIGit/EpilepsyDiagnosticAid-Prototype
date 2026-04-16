@@ -370,7 +370,7 @@ if st.session_state.show_welcome:
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Aku paham, lanjut!"):
+    if st.button("Menuju Login Page"):
         st.session_state.show_welcome = False
         st.rerun()
 
