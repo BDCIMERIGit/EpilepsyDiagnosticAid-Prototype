@@ -317,24 +317,6 @@ if st.session_state.show_welcome:
         justify-content: space-between;
     }
 
-    .welcome-text {
-        font-size: 16px;
-        line-height: 1.8;
-        margin-bottom: 40px;
-        color: #000;
-    }
-
-    .welcome-btn button {
-        width: fit-content;
-        padding: 12px 24px;
-        border-radius: 14px;
-        height: auto;
-        font-size: 16px;
-        background-color: #5cc8a1;
-        color: white;
-        border: none;
-    }
-
     /* =========================================
        TITLE
     ========================================= */
