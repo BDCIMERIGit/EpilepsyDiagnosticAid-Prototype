@@ -281,7 +281,7 @@ if st.session_state.show_welcome:
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        padding-top: 120px;       /* ⬅️ ATUR TURUNNYA */
+        padding-top: 140px;       /* ⬅️ ATUR TURUNNYA */
     }
 
     /* TITLE */
