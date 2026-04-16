@@ -344,7 +344,7 @@ if st.session_state.show_welcome:
 
     /* tombolnya */
     div.stButton > button {
-        width: 100%;
+        width: 50%;
         border-radius: 30px;
         height: 52px;
         font-size: 18px;
