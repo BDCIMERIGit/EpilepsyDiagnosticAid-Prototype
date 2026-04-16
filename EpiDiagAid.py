@@ -356,11 +356,10 @@ if st.session_state.show_welcome:
     </style>
     """, unsafe_allow_html=True)
 
-    st.markdown("""
+    st.write("""
     <div class="welcome-container">
         <div class="welcome-box">
             <div class="welcome-title">Epilepsy Diagnostic Aid</div>
-
             <div class="welcome-text">
                 Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
                 Aplikasi ini akan membantu para dokter dalam membuat diagnosis
