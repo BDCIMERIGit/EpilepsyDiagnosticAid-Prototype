@@ -337,7 +337,7 @@ if st.session_state.show_welcome:
     div.stButton {
         position: fixed;
         top: 85%;
-        left: 70%;
+        left: 85%;
         transform: translateX(-50%);
         width: 500px;
     }
