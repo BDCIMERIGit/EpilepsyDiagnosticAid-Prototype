@@ -348,6 +348,7 @@ if st.session_state.show_welcome:
         st.session_state.show_welcome = False
         st.rerun()
 
+    st.markdown('</div>', unsafe_allow_html=True) #gabungan
     st.markdown('</div>', unsafe_allow_html=True)  # tombol
 
     st.stop()
