@@ -280,7 +280,8 @@ if st.session_state.show_welcome:
 
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
+        padding-top: 120px;       /* ⬅️ ATUR TURUNNYA */
     }
 
     /* TITLE */
