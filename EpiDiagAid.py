@@ -337,14 +337,14 @@ if st.session_state.show_welcome:
     div.stButton {
         position: fixed;
         top: 85%;
-        left: 50%;
+        left: 70%;
         transform: translateX(-50%);
         width: 500px;
     }
 
     /* tombolnya */
     div.stButton > button {
-        width: 50%;
+        width: 40%;
         border-radius: 30px;
         height: 52px;
         font-size: 18px;
