@@ -242,6 +242,96 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 # =====================================================
+# WELCOME PAGE STATE
+# =====================================================
+if "show_welcome" not in st.session_state:
+    st.session_state.show_welcome = True
+
+# =====================================================
+# WELCOME PAGE UI
+# =====================================================
+if st.session_state.show_welcome:
+
+    st.markdown("""
+    <style>
+
+    /* FULL CENTER */
+    .welcome-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* BOX UTAMA (TRANSPARANSI & WARNA MENYESUAIKAN GAMBAR) */
+    .welcome-box {
+        width: 500px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid #3bbf8a;
+        border-radius: 8px;
+        backdrop-filter: blur(8px);
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* HEADER */
+    .welcome-title {
+        border: 2px solid #3bbf8a;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 22px;
+        font-weight: 500;
+        background: rgba(255,255,255,0.2);
+    }
+
+    /* TEXT */
+    .welcome-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #000;
+    }
+
+    /* BUTTON */
+    .welcome-btn button {
+        width: 100%;
+        border-radius: 30px;
+        height: 50px;
+        font-size: 18px;
+        background-color: rgba(255,255,255,0.6);
+        color: black;
+        border: 2px solid #888;
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div class="welcome-container">', unsafe_allow_html=True)
+    st.markdown('<div class="welcome-box">', unsafe_allow_html=True)
+
+    st.markdown('<div class="welcome-title">Epilepsy Diagnostic Aid</div>', unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="welcome-text">
+    Epilepsi adalah diagnosis klinis, untuk itu diperlukan anamnesis yang baik dan terarah.
+    Aplikasi ini akan membantu para dokter dalam membuat diagnosis
+    dan memberikan tatalaksana awal.
+    </div>
+    """, unsafe_allow_html=True)
+
+    # BUTTON
+    st.markdown('<div class="welcome-btn">', unsafe_allow_html=True)
+    if st.button("Aku paham, lanjut!"):
+        st.session_state.show_welcome = False
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.stop()
+
+# =====================================================
 # LOGIN SYSTEM
 # =====================================================
 USERS = {
