@@ -283,8 +283,6 @@ if st.session_state.show_welcome:
         align-items: center;
     }
 
-    
-
     /* TITLE */
     .welcome-title {
         font-size: 24px;
@@ -317,7 +315,6 @@ if st.session_state.show_welcome:
     """, unsafe_allow_html=True)
 
     st.markdown('<div class="welcome-container">', unsafe_allow_html=True)
-    st.markdown('<div class="welcome-box">', unsafe_allow_html=True)
 
     st.markdown('<div class="welcome-title">Epilepsy Diagnostic Aid</div>', unsafe_allow_html=True)
 
@@ -335,7 +332,6 @@ if st.session_state.show_welcome:
         st.session_state.show_welcome = False
         st.rerun()
 
-    st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
