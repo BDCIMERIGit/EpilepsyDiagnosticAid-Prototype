@@ -283,16 +283,7 @@ if st.session_state.show_welcome:
         align-items: center;
     }
 
-    /* BOX UTAMA */
-    .welcome-box {
-        width: 520px;
-        background: rgba(255, 255, 255, 0.18);
-        border: 2px solid #3bbf8a;
-        border-radius: 10px;
-        backdrop-filter: blur(10px);
-        text-align: center;
-        padding: 30px 25px;
-    }
+    
 
     /* TITLE */
     .welcome-title {
