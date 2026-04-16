@@ -293,6 +293,15 @@ if st.session_state.show_welcome:
     padding: 30px 25px;
     }
 
+    .welcome-box {
+        position: relative;
+    }
+
+    /* HAPUS VISUAL KOTAK KOSONG ATAS */
+    .welcome-box::before {
+        content: none !important;
+    }
+
     /* TITLE (HANYA 1 BOX — FIX DOUBLE BOX) */
     .welcome-title {
         font-size: 24px;
