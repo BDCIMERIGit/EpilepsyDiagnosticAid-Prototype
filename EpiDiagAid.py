@@ -251,96 +251,55 @@ if "show_welcome" not in st.session_state:
 # WELCOME PAGE UI
 # =====================================================
 
-if "show_welcome" not in st.session_state:
-    st.session_state.show_welcome = True
-
 if st.session_state.show_welcome:
 
     st.markdown("""
     <style>
 
-    /* =========================================
-       RESET STREAMLIT LAYOUT (FIX KOTAK KOSONG)
-    ========================================= */
-    .main > div {
-        background: transparent !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-    }
-
-    /* HILANGKAN SCROLL */
-    html, body, .stApp {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-
-    /* HAPUS SPACE ATAS */
-    .block-container {
-        padding-top: 0rem !important;
-        margin-top: 0rem !important;
-    }
-
-    /* =========================================
-       FULLSCREEN LAYOUT
-    ========================================= */
+    /* FULL CENTER */
     .welcome-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
     }
 
-    /* =========================================
-       BOX UTAMA (GLASS EFFECT)
-    ========================================= */
+    /* BOX UTAMA (TRANSPARANSI & WARNA MENYESUAIKAN GAMBAR) */
     .welcome-box {
-        width: 520px;
-        background: rgba(255, 255, 255, 0.18);
+        width: 500px;
+        background: rgba(255, 255, 255, 0.15);
         border: 2px solid #3bbf8a;
-        border-radius: 10px;
-        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        backdrop-filter: blur(8px);
         text-align: center;
-        padding: 30px 25px;
+        padding: 20px;
     }
 
-    /* =========================================
-       TITLE
-    ========================================= */
+    /* HEADER */
     .welcome-title {
-        font-size: 24px;
-        font-weight: 500;
+        border: 2px solid #3bbf8a;
+        padding: 10px;
         margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #3bbf8a;
+        font-size: 22px;
+        font-weight: 500;
+        background: rgba(255,255,255,0.2);
     }
 
-    /* =========================================
-       TEXT
-    ========================================= */
+    /* TEXT */
     .welcome-text {
         font-size: 16px;
-        line-height: 1.7;
-        margin-bottom: 30px;
+        line-height: 1.6;
+        margin-bottom: 25px;
         color: #000;
     }
 
-    /* =========================================
-       BUTTON
-    ========================================= */
+    /* BUTTON */
     .welcome-btn button {
         width: 100%;
         border-radius: 30px;
-        height: 52px;
+        height: 50px;
         font-size: 18px;
-        background-color: rgba(255,255,255,0.7);
+        background-color: rgba(255,255,255,0.6);
         color: black;
         border: 2px solid #888;
     }
@@ -348,7 +307,6 @@ if st.session_state.show_welcome:
     </style>
     """, unsafe_allow_html=True)
 
-    # ================= UI =================
     st.markdown('<div class="welcome-container">', unsafe_allow_html=True)
     st.markdown('<div class="welcome-box">', unsafe_allow_html=True)
 
@@ -362,13 +320,13 @@ if st.session_state.show_welcome:
     </div>
     """, unsafe_allow_html=True)
 
+    # BUTTON
     st.markdown('<div class="welcome-btn">', unsafe_allow_html=True)
-
     if st.button("Aku paham, lanjut!"):
         st.session_state.show_welcome = False
         st.rerun()
-
     st.markdown('</div>', unsafe_allow_html=True)
+
     st.markdown('</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
