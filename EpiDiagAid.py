@@ -349,8 +349,6 @@ if st.session_state.show_welcome:
         st.rerun()
 
     st.markdown('</div>', unsafe_allow_html=True)  # tombol
-    st.markdown('</div>', unsafe_allow_html=True)  # welcome-box
-    st.markdown('</div>', unsafe_allow_html=True)  # container
 
     st.stop()
 # =====================================================
