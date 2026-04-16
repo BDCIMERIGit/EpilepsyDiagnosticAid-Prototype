@@ -302,12 +302,37 @@ if st.session_state.show_welcome:
     ========================================= */
     .welcome-box {
         width: 520px;
+        min-height: 300px; /* bikin tinggi memanjang */
+    
         background: rgba(255, 255, 255, 0.18);
         border: 2px solid #3bbf8a;
-        border-radius: 10px;
+        border-radius: 12px;
         backdrop-filter: blur(10px);
-        text-align: center;
-        padding: 30px 25px;
+
+        text-align: left; /* biar mirip desain */
+        padding: 35px 30px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .welcome-text {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 40px;
+        color: #000;
+    }
+
+    .welcome-btn button {
+        width: fit-content;
+        padding: 12px 24px;
+        border-radius: 14px;
+        height: auto;
+        font-size: 16px;
+        background-color: #5cc8a1;
+        color: white;
+        border: none;
     }
 
     /* =========================================
