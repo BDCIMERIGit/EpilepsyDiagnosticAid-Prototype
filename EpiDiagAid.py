@@ -252,7 +252,7 @@ if "show_welcome" not in st.session_state:
 # =====================================================
 if st.session_state.show_welcome:
 
-        st.markdown("""
+    st.markdown("""
     <style>
 
     /* HILANGKAN SCROLL & PADDING DEFAULT STREAMLIT */
