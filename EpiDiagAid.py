@@ -675,7 +675,7 @@ elif st.session_state.step == 4:
             tipe9 = "Kejang Fokal"
 
             if q9d:
-                tipe9 = "Focal to Bilateral Tonic Clonic"
+                tipe9 = "Kejang Fokal" #diganti dari Focal to Bilateral Tonic Clonic
 
         elif ada_aura:
             tipe9 = "Kejang Fokal (berdasarkan gejala aura)"
