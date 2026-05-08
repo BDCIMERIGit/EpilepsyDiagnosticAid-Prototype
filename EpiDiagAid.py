@@ -511,7 +511,7 @@ elif st.session_state.step == 2:
             q7b = 1 if q7b == 0 else 0
 
             if q7a == 1 and q7b == 1:
-                diagnosis_lanjutan = "First unprovoked seizure (FUS)"
+                diagnosis_lanjutan = "Unprovoked Seizure" #Diganti dari First Unprovoked Seizure (FUS)
             elif q7a == 0 and q7b == 1:
                 diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
             elif q7a == 1 and q7b == 0:
@@ -594,6 +594,10 @@ if st.session_state.step == 3:
         # =========================
         if skor8a == 1 and skor8c == 0:
             hasil8 = "First Unprovoked Seizure (FUS)"
+            next_step = 6
+
+        elif skor8b == 1 and skor8c == 0;
+            hasil18 = "First Unprovoked Seizure (FUS)"
             next_step = 6
 
         elif skor8b == 1 and skor8c == 1:
