@@ -692,7 +692,7 @@ elif st.session_state.step == 4:
         st.rerun()
 
 # =====================================================
-# STEP 5 — PERTANYAAN 10 (KEJANG UMUM SESUAI RULE AWAL)
+# STEP 5 — PERTANYAAN 10
 # =====================================================
 
 elif st.session_state.step == 5:
@@ -709,14 +709,34 @@ elif st.session_state.step == 5:
 
         q10a, q10b, q10c = map(conv, [q10a, q10b, q10c])
 
-        # =========================
-        # RULE SESUAI PERMINTAAN
-        # =========================
+        # =================================================
+        # JIKA MEMENUHI KEJANG UMUM
+        # MAKA HAPUS STATUS KEJANG FOKAL
+        # =================================================
         if q10a == 1:
-            tipe10 = "Kejang Umum"
-        else:
-            tipe10 = "Tidak memenuhi kriteria Kejang Umum"
 
+            tipe10 = "Kejang Umum"
+
+            # override hasil fokal
+            st.session_state.tipe9 = "Bukan Kejang Fokal"
+
+        else:
+
+            # ambil hasil fokal sebelumnya
+            hasil_fokal = st.session_state.get("tipe9", "")
+
+            # jika sudah fokal → bukan umum
+            if "Kejang Fokal" in hasil_fokal:
+
+                tipe10 = "Bukan Kejang Umum"
+
+            else:
+
+                tipe10 = "Tidak memenuhi kriteria Kejang Umum"
+
+        # =================================================
+        # SIMPAN HASIL
+        # =================================================
         st.session_state.tipe10 = tipe10
         st.session_state.step = 6
         st.rerun()
