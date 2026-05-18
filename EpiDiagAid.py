@@ -512,15 +512,22 @@ elif st.session_state.step == 2:
 
             if q7a == 1 and q7b == 1:
                 diagnosis_lanjutan = "Unprovoked Seizure" #Diganti dari First Unprovoked Seizure (FUS)
+                next_step = 3
+                
             elif q7a == 0 and q7b == 1:
                 diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
+                next_step = 6
+                
             elif q7a == 1 and q7b == 0:
                 diagnosis_lanjutan = "Kejang simptomatik akut"
+                next_step = 6
+                
             else:
                 diagnosis_lanjutan = "Perlu evaluasi lanjut"
+                next_step = 3
 
             st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
-            st.session_state.step = 3
+            st.session_state.step = next_step = 6
             st.rerun()
 
 # =====================================================
