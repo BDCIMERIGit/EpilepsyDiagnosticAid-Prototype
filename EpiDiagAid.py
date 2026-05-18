@@ -527,7 +527,7 @@ elif st.session_state.step == 2:
                 next_step = 3
 
             st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
-            st.session_state.step = next_step = 6
+            st.session_state.step = next_step
             st.rerun()
 
 # =====================================================
