@@ -491,15 +491,18 @@ elif st.session_state.step == 2:
 
             if q7a == 1 and q7b == 0:
                 diagnosis_lanjutan = "Paroksismal non-epilepsi (PNE)"
+                nextStep = 6
 
             elif q7b == 1 and q7a == 0:
                 diagnosis_lanjutan = "Kejang Simptomatik Akut"
+                nextStep = 6
 
             else:
                 diagnosis_lanjutan = "Bukan Kejang Tanpa ada Kriteria Lain"
+                nextStep = 6
 
             st.session_state.diagnosis_lanjutan = diagnosis_lanjutan
-            st.session_state.step = 6
+            st.session_state.step = nextStep
             st.rerun()
 
         # =========================================
