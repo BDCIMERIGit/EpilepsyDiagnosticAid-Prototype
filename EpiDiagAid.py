@@ -607,7 +607,7 @@ if st.session_state.step == 3:
             next_step = 6
 
         elif skor8b == 1 and skor8c == 0:
-            hasil18 = "First Unprovoked Seizure (FUS)"
+            hasil8 = "First Unprovoked Seizure (FUS)"
             next_step = 6
 
         elif skor8b == 1 and skor8c == 1:
